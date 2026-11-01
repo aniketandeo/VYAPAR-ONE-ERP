@@ -1,0 +1,1035 @@
+# VYAPAR ONE ERP — STRICT EXISTING CODE AUDIT AND COMPLETE UPDATE
+
+## READ THIS ENTIRE PROMPT BEFORE MAKING ANY CHANGES
+
+I have provided:
+1. The current VYAPAR ONE ERP source code ZIP.
+2. My original detailed requirements for updating the existing ERP.
+
+Previous attempts did not implement all requirements completely. Some features were added only partially, some buttons may not be connected to real functionality, and some requested modules or operations may still be missing.
+
+**YOUR TASK IS TO INSPECT THE ACTUAL EXISTING CODE, COMPARE IT AGAINST ALL REQUIREMENTS BELOW, AND IMPLEMENT ONLY THE MISSING OR INCORRECT PARTS.**
+
+Do not create a new ERP or replacement application.
+
+Keep the existing product name exactly **VYAPAR ONE ERP**.
+
+---
+
+# PART 1 — MANDATORY CODE AUDIT FIRST
+
+Before changing code:
+
+1. Inspect the complete source code ZIP.
+2. Identify the existing modules, pages, components, routes, database structure, Firebase configuration, authentication, business logic, and reports.
+3. Inspect existing Labour Management and Attendance functionality in detail.
+4. Compare every requirement in this prompt against the actual implementation.
+5. Prepare a requirement checklist with these statuses:
+   - COMPLETED AND VERIFIED
+   - PARTIALLY IMPLEMENTED
+   - UI PRESENT BUT FUNCTIONALITY MISSING
+   - NOT IMPLEMENTED
+   - BLOCKED BY EXTERNAL CONFIGURATION
+6. Identify the exact source files responsible for each missing feature.
+7. Fix the existing implementation instead of rebuilding features that already work.
+
+Do not assume a feature is complete merely because a button, tab, form, or menu exists.
+
+## Strict Rules
+
+- Do not create a duplicate ERP.
+- Do not replace working modules unnecessarily.
+- Do not remove existing New Booking buttons or working booking workflows.
+- Do not reset, delete, overwrite, or migrate production data without explicit approval.
+- Preserve existing IDs and relationships.
+- Do not replace real data with sample data.
+- Do not create static demo screens in place of working functionality.
+- Do not add buttons that do nothing.
+- Do not display success messages when an operation has failed.
+- Do not silently skip any requirement.
+- Reuse existing deletion confirmation and verification procedures.
+- Protect financial and transaction records from unsafe deletion.
+- Preserve the existing application architecture wherever practical.
+- Fix errors introduced by the modifications before proceeding.
+
+Make controlled changes and run available tests after each major section.
+
+---
+
+# PART 2 — CRITICAL SECURITY AND DATABASE AUDIT
+
+Inspect the existing Firebase, Firestore rules, authentication, storage services, and synchronization code.
+
+The current source requires particular attention to:
+
+- `firestore.rules`
+- `src/firebase.ts`
+- `src/context/AuthContext.tsx`
+- `src/services/storage.ts`
+- `src/components/settings/MasterSettingsView.tsx`
+- `src/types/index.ts`
+
+## Security Requirements
+
+1. Review any public read/write database permissions.
+2. Protect customers, bookings, plots, receipts, payments, accounting, vendors, materials, labour, advisers, company settings, and backups.
+3. Do not store plaintext passwords in normal ERP records.
+4. Do not expose password hashes, authentication tokens, or privileged credentials.
+5. Use secure authentication and authorization.
+6. Ensure deactivated users cannot access protected data or APIs.
+7. Enforce company permissions on the backend/database, not just in the frontend.
+8. Prevent unauthorized access by changing URLs, browser state, or request parameters.
+9. Ensure legitimate existing users can still access authorized records after security improvements.
+10. Do not destroy existing accounts or records during a security migration.
+
+## Database and Synchronization
+
+Inspect the existing `localStorage` and Firestore persistence implementation, including `erp_state/current` if it remains part of the architecture.
+
+Verify:
+
+- Initial loading and saving.
+- Refresh and login persistence.
+- Failed database writes.
+- Multiple users editing records.
+- Stale browser data overwriting newer records.
+- Duplicate transactions.
+- Cloud synchronization.
+- Company data separation.
+- Recovery from failures.
+
+Do not migrate or overwrite production data without explicit approval.
+
+If the current architecture needs changes to support secure multi-company use, document the required migration and implement only safe, approved steps.
+
+---
+
+# PART 3 — DASHBOARD
+
+Improve the existing Dashboard without removing working features.
+
+Requirements:
+
+1. Professional and attractive dashboard cards.
+2. Appropriate colors and clear status indicators.
+3. Responsive desktop, tablet, and mobile layout.
+4. All figures connected to actual saved records.
+5. No hardcoded business totals.
+6. Useful summaries of projects, customers, properties, materials, vendors, labour, payments, and expenses where applicable.
+
+Verify the displayed totals against actual records.
+
+---
+
+# PART 4 — PROJECT MANAGEMENT
+
+Preserve the existing Project module.
+
+Implement or correct:
+
+- Professional UI.
+- Active/Inactive control.
+- Saved project status.
+- Authorized status changes.
+- Clear status indicators.
+- Protection against prohibited new operations on inactive projects.
+- Historical report access for inactive projects.
+
+Deactivation must never delete historical records.
+
+---
+
+# PART 5 — CUSTOMER ENTRY AND CUSTOMER DIRECTORY
+
+Preserve the existing New Booking buttons and workflows.
+
+In Customer Directory, ensure the following actions work:
+
+- View
+- Edit
+- Delete
+
+Requirements:
+
+1. View displays complete available customer details.
+2. Edit saves authorized changes to the actual database.
+3. Delete uses the existing deletion verification mechanism.
+4. Protect associated bookings, plots, receipts, and payments from orphaned records.
+5. Preserve customer IDs and validation.
+6. Refresh the directory after successful operations.
+7. Display accurate success and error messages.
+
+---
+
+# PART 6 — CUSTOMER MANAGEMENT
+
+Rename the visible existing Plot/Flat Management module to:
+
+**CUSTOMER MANAGEMENT**
+
+Do not unnecessarily rename internal database collections or identifiers.
+
+Preserve existing property, plot, flat, and booking functionality.
+
+## Customer Details
+
+Implement or correct View, Edit, and Delete operations.
+
+Show all relevant existing data, including:
+
+- Customer details.
+- Project.
+- Plot/Flat number.
+- Booking details.
+- Property price.
+- Payment history.
+- Amount paid.
+- Outstanding balance.
+- Booking status.
+- Full-payment status.
+- Receipts and related transactions.
+
+Use actual saved data.
+
+## SATISFIED CUSTOMERS
+
+Provide a separate tab named:
+
+**SATISFIED CUSTOMERS**
+
+Requirements:
+
+1. Automatically classify customers as fully paid only when the actual payment condition is satisfied.
+2. Calculate the balance from valid recorded payments and approved adjustments.
+3. Account for refunds, reversals, and corrections.
+4. Do not classify partially paid customers as fully paid.
+5. Recalculate the status when relevant transactions change.
+6. Preserve original customer and payment records.
+7. Do not create duplicate customer records.
+8. Verify the existing implementation and correct only what is missing or incorrect.
+
+---
+
+# PART 7 — MATERIAL MANAGEMENT
+
+Inspect the existing Material Management module.
+
+In transaction History, provide functional actions:
+
+- View
+- Edit
+- Delete
+
+Ensure that:
+
+1. Transaction details are displayed correctly.
+2. Authorized edits are saved.
+3. Deletion follows the existing verification mechanism.
+4. Stock quantities are recalculated correctly.
+5. Vendor and project relationships are preserved.
+6. Historical records and accounting remain consistent.
+7. Stock does not become incorrect after editing or deleting a transaction.
+
+---
+
+# PART 8 — VENDOR MANAGEMENT
+
+Preserve the existing Vendor Directory structure.
+
+Implement or correct:
+
+- Vendor View/Edit/Delete.
+- GST Bills.
+- Non-GST Bills.
+- Bill number and date.
+- Vendor association.
+- Tax details where applicable.
+- Due date.
+- Paid amount.
+- Outstanding amount.
+- Payment status.
+- Overdue indicators.
+- Payment history.
+- Vendor ledger integration.
+
+Provide appropriate bill actions:
+
+- View
+- Edit
+- Delete
+- History
+
+Do not invent GST rates or tax amounts.
+
+Ensure bill payments update the relevant vendor ledger and accounting records correctly.
+
+---
+
+# PART 9 — LABOUR MANAGEMENT AND COMPLETE LABOUR ATTENDANCE REGISTER
+
+## CRITICAL REQUIREMENT
+
+**THE COMPLETE LABOUR ATTENDANCE REGISTER IS MANDATORY. DO NOT SKIP IT. DO NOT IMPLEMENT ONLY A BASIC PRESENT/ABSENT DROPDOWN.**
+
+Inspect the existing Labour Management code first. If a basic attendance function already exists, improve and complete it instead of creating a disconnected duplicate system.
+
+All attendance functions must use the existing authorized database and labour/project records.
+
+## A. Labour Directory
+
+Provide or correct these actions:
+
+- View
+- Edit
+- Delete
+- Labour History
+
+Support Active/Inactive status.
+
+Each labour record should include relevant existing fields such as:
+
+- Labour ID.
+- Labour Name.
+- Contact Details.
+- Designation or Work Type.
+- Assigned Project.
+- Joining Date.
+- Current Status.
+- Wage Rate, where applicable.
+- Attendance History.
+- Payment History.
+
+Use a Project dropdown when creating or editing a labour record.
+
+Save the selected project association correctly.
+
+## B. Create a Separate Labour Attendance Register
+
+Inside the existing Labour Management module, provide a clearly visible menu or tab named:
+
+**LABOUR ATTENDANCE REGISTER**
+
+It must be a real, functional register connected to the actual database.
+
+The register must contain these sections:
+
+1. Daily Attendance Sheet.
+2. Project-wise Attendance Register.
+3. Monthly Attendance Register.
+4. Labour-wise Attendance History.
+5. Attendance Summary.
+6. Attendance Correction History, where supported.
+7. Print Register.
+8. Download Report.
+
+Do not create duplicate attendance records or a separate disconnected database.
+
+## C. Daily Attendance Sheet
+
+Implement the complete workflow:
+
+**Select Project → Select Date → Load Eligible Labourers → Mark Attendance → Save → Verify Saved Records**
+
+Provide a clear attendance entry table with appropriate fields:
+
+| Sr. No. | Labour ID | Labour Name | Work Type | Project | Attendance Date | Status | Payable Units | Remarks | Action |
+|---|---|---|---|---|---|---|---|---|---|
+
+Use the existing data model wherever possible.
+
+Support attendance statuses as applicable:
+
+- Present
+- Absent
+- Half Day
+- Leave
+- Weekly Off
+- Holiday
+
+Provide convenient operations such as Mark All Present where practical, while allowing individual corrections before saving.
+
+Requirements:
+
+1. The user must select a project first.
+2. The user must select the attendance date.
+3. Load only eligible active labourers assigned to that project.
+4. Save attendance against the correct labour ID, project ID, and date.
+5. Show the actual saved attendance after saving.
+6. Refresh the register without duplicating records.
+7. Display a clear success message only after the database confirms the save.
+8. Display a clear error if saving fails.
+9. Prevent duplicate attendance for the same labourer, project, and date unless the existing system explicitly supports multiple shifts.
+10. Do not silently mark all labourers present without user confirmation.
+
+## D. Project-Wise Attendance Register
+
+Provide a functional project-wise register.
+
+Allow the user to select a project and date range.
+
+Display only attendance records associated with the selected project.
+
+Include relevant information:
+
+- Project Name.
+- Attendance Date.
+- Labour ID.
+- Labour Name.
+- Attendance Status.
+- Payable Units, where applicable.
+- Remarks.
+- Recorded By, if available.
+
+Changing the selected project must refresh the records correctly.
+
+Do not mix labourers or attendance from unrelated projects.
+
+Validate project assignment before saving attendance.
+
+Historical attendance must remain available even when a project or labourer becomes inactive.
+
+## E. Monthly Attendance Register
+
+**A COMPLETE MONTHLY ATTENDANCE REGISTER MUST BE IMPLEMENTED.**
+
+Provide filters for:
+
+- Project.
+- Month.
+- Year.
+- Labourer, where required.
+- Attendance Status.
+
+Display each labourer's attendance across the selected month.
+
+The register should include:
+
+- Sr. No.
+- Labour ID.
+- Labour Name.
+- Project.
+- Date-wise attendance.
+- Total Present Days.
+- Total Absent Days.
+- Total Half Days.
+- Total Leave Days.
+- Weekly Off/Holidays, where recorded.
+- Total Payable Attendance Units, where applicable.
+- Remarks.
+
+Use actual saved attendance records to calculate totals.
+
+Do not count the same record more than once.
+
+Distinguish between attendance days and payable attendance units. If the configured wage policy counts a half day as 0.5 units, apply that rule consistently.
+
+When an authorized user corrects attendance, recalculate the affected totals.
+
+## F. Labour-Wise Attendance History
+
+Implement this selection flow:
+
+**Select Project → Select Labourer → Select Date Range**
+
+Display the selected labourer's real historical records, including:
+
+- Attendance Date.
+- Project.
+- Labour Name.
+- Attendance Status.
+- Payable Units, if applicable.
+- Remarks.
+- Recorded By, if available.
+- Last Updated, if available.
+
+Provide month, year, and custom date range filters.
+
+Historical records must remain available even if the labourer is now inactive.
+
+Do not invent missing historical attendance.
+
+## G. Labour Active/Inactive Integration
+
+Connect the register to the existing labour status.
+
+1. Active labourers assigned to the selected project can appear in new attendance entry.
+2. Inactive labourers must not appear in new attendance entry.
+3. Past attendance remains available in historical registers.
+4. Reactivation restores eligibility where project assignment permits it.
+5. Deactivation must not delete attendance or payment history.
+6. Enforce authorization in the backend/database where applicable, not only by hiding rows in the UI.
+
+## H. Attendance Editing and Correction History
+
+Provide authorized operations to:
+
+- View Attendance.
+- Edit/Correct Attendance.
+- Review Attendance History.
+
+Validate attendance corrections.
+
+Where supported by the existing architecture, record:
+
+- Original attendance value.
+- Corrected attendance value.
+- Correction date/time.
+- User who made the correction.
+- Reason for correction, where appropriate.
+
+Do not silently overwrite important historical information when an audit trail is required.
+
+Use the existing application's established verification and confirmation procedures.
+
+## I. Attendance-Based Wage Calculation
+
+Integrate attendance with the existing labour payment calculations where supported.
+
+Where wage rates exist, calculate the applicable payable amount using the configured business rules.
+
+Support relevant fields:
+
+- Labour Name.
+- Project.
+- Wage Rate.
+- Payable Attendance Units.
+- Gross Wages.
+- Advance Paid.
+- Approved Adjustments.
+- Amount Paid.
+- Remaining Payable Amount.
+
+Do not invent wage rates.
+
+Saving attendance must not automatically create an actual payment transaction unless the existing approved workflow explicitly requires it.
+
+Attendance and payments must remain separate, linked records.
+
+If attendance is corrected after wages have been calculated, identify the financial impact. Do not silently modify an already-posted payment.
+
+## J. Attendance Summary
+
+Provide a useful summary based on actual saved attendance, including:
+
+- Total Active Labourers for the Selected Project.
+- Labourers Present.
+- Labourers Absent.
+- Half-Day Attendance.
+- Leave.
+- Attendance Completion Status.
+
+Allow filtering by project and date.
+
+Do not confuse registered labourers with labourers present on a particular day.
+
+## K. Attendance Print and Download
+
+Provide working Print and Download operations for:
+
+- Daily Attendance Sheet.
+- Monthly Attendance Register.
+- Project-wise Attendance Report.
+- Individual Labour Attendance History.
+
+Where supported, provide a real PDF download.
+
+Use a professional A4 print layout where practical.
+
+Include:
+
+- Company Name and Logo from Master Settings.
+- Report Title.
+- Project Name.
+- Selected Date or Month.
+- Labour ID.
+- Labour Name.
+- Date-wise Attendance.
+- Attendance Totals.
+- Report Generation Date.
+- Signature space, where appropriate.
+
+Ensure that the downloaded report contains the actual filtered attendance records.
+
+Do not create blank reports or fake download buttons.
+
+## L. Attendance Database Integrity
+
+Before changing the database structure, inspect the existing attendance model.
+
+Requirements:
+
+1. Reuse existing attendance records and IDs where appropriate.
+2. Preserve labour and project IDs.
+3. Maintain correct relationships.
+4. Prevent duplicate attendance.
+5. Validate dates and statuses.
+6. Handle failed writes correctly.
+7. Prevent stale browser data from overwriting newer attendance.
+8. Preserve historical records.
+9. Enforce company-level authorization.
+10. Do not migrate or delete production attendance records without explicit approval.
+
+## M. Mandatory Attendance Testing
+
+Test the complete attendance workflow using clearly identified test records:
+
+1. Select a project.
+2. Select an active labourer assigned to it.
+3. Open the Daily Attendance Sheet.
+4. Select the project and date.
+5. Mark attendance and save.
+6. Refresh the application and verify persistence.
+7. Open the Monthly Attendance Register and verify totals.
+8. Open Labour History and verify date-wise records.
+9. Correct an attendance entry and verify updated totals.
+10. Deactivate the labourer and verify exclusion from new attendance entry.
+11. Verify that previous attendance remains available.
+12. Verify that another project does not show unrelated attendance.
+13. Test Print and Download.
+14. Verify authorization controls.
+15. Verify company-level data separation.
+
+Do not use genuine production records as test data.
+
+### Mandatory Attendance Completion Report
+
+Report each item separately:
+
+- Daily Attendance Sheet.
+- Project-wise Attendance Register.
+- Monthly Attendance Register.
+- Labour-wise Attendance History.
+- Attendance Editing.
+- Attendance Correction History.
+- Active/Inactive Integration.
+- Attendance-Based Wage Calculation.
+- Attendance Summary.
+- Print and Download.
+- Database Persistence.
+- Company-Level Security.
+
+**A labour list with a Present/Absent dropdown is NOT a complete attendance register. All required registers must be connected to actual saved records.**
+
+---
+
+# PART 10 — ADVISER MANAGEMENT
+
+Preserve the existing Adviser Management module and Ledger Statement.
+
+Verify or implement:
+
+- View.
+- Edit.
+- Delete.
+- Photo Upload.
+
+Photo upload must validate file type and size, save through the supported storage architecture, and display the photo appropriately.
+
+Preserve adviser records, commission history, and ledger associations.
+
+---
+
+# PART 11 — COMPLETE ACCOUNT MANAGEMENT
+
+All accounting functions must remain inside the existing **ACCOUNT** module.
+
+Audit the current implementation and complete the missing functions without creating a disconnected accounting system.
+
+## A. Account Dashboard
+
+Use actual saved records to calculate:
+
+- Total Sales.
+- Total Collection.
+- Today's Collection.
+- Today's Expenses.
+- Cash in Hand.
+- Bank Balance.
+- Total Outstanding.
+- Today's Pending Payments.
+- Total Expenses.
+- Net Profit.
+
+Provide filters for Today, This Week, This Month, Financial Year, and Custom Date Range.
+
+Do not treat sales, collections, outstanding balances, cash flow, and profit as interchangeable figures.
+
+## B. Customer Ledger
+
+Provide a customer ledger showing relevant existing data:
+
+- Customer ID and Name.
+- Mobile Number.
+- Project.
+- Plot Number.
+- Plot Cost.
+- Booking Amount.
+- Total Amount Paid.
+- Payment Due.
+- Outstanding Balance.
+- Next Installment Date.
+- Payment History.
+- Receipt History.
+- Discount and Late Fee, where applicable.
+- Refund Details.
+- Remarks.
+
+For customers with multiple plots, show individual plot balances and a consolidated customer summary without mixing plot balances.
+
+## C. Payment Collection and Receipts
+
+Verify or implement:
+
+- Unique Receipt Number.
+- Receipt Date.
+- Customer Name and ID.
+- Plot Number.
+- Payment Type.
+- Payment Amount.
+- Payment Mode.
+- Transaction ID/UTR where applicable.
+- Bank Account.
+- Approved Discount/Late Fee.
+- Received By.
+- Remarks.
+- Print Receipt.
+- Download PDF.
+
+After a successful payment:
+
+1. Save the transaction.
+2. Update the correct ledger.
+3. Recalculate outstanding balance.
+4. Update the correct cash/bank balance.
+5. Generate a unique receipt number.
+6. Enable actual receipt printing/download.
+7. Refresh the Account Dashboard.
+
+Prevent duplicate payment posting.
+
+## D. EMI Management
+
+Verify customer, plot, EMI amount, due dates, total EMIs, paid EMIs, pending EMIs, overdue EMIs, remaining amount, late fees, and payment statuses.
+
+Calculate status using actual payments and due dates.
+
+Do not count a payment more than once.
+
+## E. Expense Management
+
+Provide actual expense recording for applicable categories such as salaries, rent, electricity, marketing, commissions, construction, legal expenses, travel, vehicles, bank charges, and other expenses.
+
+Support voucher number, date, category, payee, description, amount, payment mode, cash/bank account, bill details, approval, and remarks.
+
+Provide functional Expense Voucher printing and PDF download.
+
+## F. Cash and Bank Management
+
+Verify:
+
+- Cash Book.
+- Bank Book.
+- Opening balances.
+- Receipts and payments.
+- Deposits and withdrawals.
+- Bank transfers.
+- Cheques.
+- UPI.
+- NEFT.
+- RTGS.
+- Bank charges.
+- Cheque bounce handling, where supported.
+
+Cash-to-bank and bank-to-cash transfers must not be treated as income or expense by themselves.
+
+## G. Other Income
+
+Support applicable categories such as interest, rent, service income, documentation charges, and other income.
+
+Prevent duplicate income posting.
+
+## H. Adviser Commission
+
+Verify adviser name, customer, plot, sale amount, configured commission basis, commission rate, commission amount, advance paid, remaining commission, payment date, voucher, and status.
+
+Do not hardcode an arbitrary commission rule.
+
+## I. Outstanding and Recovery
+
+Display actual customer dues, overdue amount, due date, days overdue, last payment, follow-up remarks, and recovery status.
+
+Provide dynamic overdue categories of 1–30, 31–60, 61–90, and over 90 days.
+
+## J. Refund and Cancellation
+
+Provide refund details, approval, refund voucher, refund date, and refund mode.
+
+Preserve the original receipt and payment records. Record refunds as separate linked transactions.
+
+Require the appropriate authorization.
+
+## K. Accounting Reports
+
+Verify or implement:
+
+1. Day Book.
+2. Cash Book.
+3. Bank Book.
+4. Customer Ledger.
+5. Plot-wise Ledger.
+6. Receipt Register.
+7. Payment Register.
+8. Expense Register.
+9. Income Register.
+10. Outstanding Report.
+11. EMI Report.
+12. Commission Report.
+13. Refund Report.
+14. Trial Balance.
+15. Profit & Loss.
+16. Balance Sheet.
+17. Cash Flow Statement.
+
+Use actual accounting entries.
+
+Do not fabricate financial statements from receipts and expenses alone. Identify missing accounting structures and explain any required production migration before performing it.
+
+## L. Vouchers
+
+Keep accounting vouchers inside ACCOUNT:
+
+- Receipt Voucher.
+- Payment Voucher.
+- Contra Voucher.
+- Journal Voucher.
+- Sales Voucher.
+- Purchase Voucher, where applicable.
+- Credit Note.
+- Debit Note.
+- Refund Voucher.
+
+Use unique numbers, correct dates, linked records, and consistent ledger entries.
+
+---
+
+# PART 12 — REPORT MANAGEMENT
+
+Verify that the existing Reports module provides working:
+
+- View.
+- Print.
+- Download.
+- History, wherever applicable.
+
+## Vendor Reports
+
+Allow selection of a specific vendor and display relevant vendor details, bills, GST/non-GST classification, purchases, payments, outstanding balances, and transaction history.
+
+Support actual A4 printing and PDF download where available.
+
+## Material Reports
+
+Provide reports for:
+
+- Individual Materials.
+- All Materials.
+- Material Transactions by Vendor.
+- Material Transactions by Project.
+- Stock Balances.
+- Movement History.
+
+Allow relevant filters for material, vendor, project, and date range.
+
+## Report Requirements
+
+- Use actual saved data.
+- Make filters functional.
+- Display correct totals and subtotals.
+- Include company branding.
+- Provide professional A4 print layouts.
+- Ensure History displays real associated transactions.
+- Do not create fake report downloads or static histories.
+
+---
+
+# PART 13 — MASTER SETTINGS AND MULTI-COMPANY SYSTEM
+
+Support up to 10 authorized companies using the same VYAPAR ONE ERP application.
+
+## Company Settings
+
+Each company must be able to maintain its own authorized:
+
+- Company Name.
+- Logo.
+- Address.
+- Mobile Number.
+- Email Address.
+- Relevant Business Details.
+- Financial Year and Settings.
+
+Use each company's own details on its receipts, vouchers, and reports.
+
+Keep the product name exactly VYAPAR ONE ERP.
+
+## Company Data Separation
+
+Company records must be securely separated, including customers, projects, plots, bookings, payments, accounts, vendors, materials, labour, attendance, advisers, reports, settings, and uploaded files.
+
+Enforce authorization on the backend/database.
+
+Do not rely on frontend filtering alone.
+
+Test that Company A cannot read, edit, or delete Company B's records.
+
+## Operator Management
+
+Provide authorized controls for:
+
+- Creating and managing operators.
+- Assigning companies.
+- Assigning module permissions.
+- Activating/deactivating accounts.
+- Secure password reset.
+- Relevant account status and audit history.
+
+Do not expose plaintext passwords, hashes, or authentication tokens.
+
+Deactivated users must lose protected access while their historical records remain intact.
+
+---
+
+# PART 14 — GOOGLE DRIVE BACKUP
+
+Target Google account:
+
+`aniket.andeo35@gmail.com`
+
+Target folder:
+
+`VYAPAR ONE ERP BACKUPS`
+
+Inspect the existing backup implementation.
+
+**A local JSON download is not a Google Drive upload.**
+
+Implement genuine authorized Drive upload and verify success before displaying a successful backup message.
+
+Requirements:
+
+1. Preserve the primary cloud database.
+2. Back up relevant ERP records.
+3. Preserve IDs and relationships.
+4. Use date/time-based filenames.
+5. Provide manual backup for authorized administrators.
+6. Implement scheduled backups using a real supported backend scheduler.
+7. Show actual backup history and errors.
+8. Keep backups private.
+9. Do not expose OAuth tokens or private keys in frontend code or APK.
+10. Document restoration and retention.
+11. Do not claim automatic backups are active unless scheduling is configured and verified.
+12. Do not claim an upload succeeded without verifying the actual destination.
+
+If external authorization, deployment, credentials, or billing configuration is missing, identify the exact remaining setup steps.
+
+---
+
+# PART 15 — ANDROID APK
+
+Provide a directly installable Android APK without requiring Google Play Store publication.
+
+Requirements:
+
+1. Preserve the existing web ERP.
+2. Use the same authorized backend and production records.
+3. Keep web and Android data synchronized.
+4. Verify login and module permissions.
+5. Verify normal Android mobile navigation.
+6. Generate a real APK if the environment supports it.
+7. Do not call a ZIP, website, PWA, or build instructions an APK.
+8. If the APK cannot be built in the current environment, provide the exact remaining build steps.
+
+---
+
+# PART 16 — UI, DATA QUALITY, AND REGRESSION TESTS
+
+Apply a consistent professional UI without removing working features.
+
+Verify:
+
+- Responsive layout.
+- Clear tables and status indicators.
+- Correct validation.
+- Loading, empty, success, and error states.
+- Search, sorting, and filtering.
+- Consistent dates and currency.
+- Confirmation before destructive actions.
+- No broken navigation.
+- No nonfunctional buttons.
+
+Use test records for testing. Do not delete or modify genuine production records during testing.
+
+Run the available TypeScript checks, production build, and relevant tests.
+
+Verify that all existing modules continue to work.
+
+---
+
+# PART 17 — FINAL REQUIREMENT-BY-REQUIREMENT REPORT
+
+After implementation, report the status of every requirement using:
+
+- COMPLETED AND TESTED
+- IMPLEMENTED BUT NOT FULLY TESTED
+- BLOCKED — SPECIFIC REASON
+- NOT IMPLEMENTED — EXPLAIN WHY
+
+Identify:
+
+1. Existing source files changed.
+2. New source files created.
+3. Existing features preserved.
+4. Database schema changes.
+5. Whether a migration was proposed, approved, or performed.
+6. Whether production data was preserved.
+7. Whether TypeScript checks passed.
+8. Whether the production build passed.
+9. Whether cloud synchronization was tested.
+10. Whether company-level security was tested.
+11. Whether Labour Attendance Register tests passed.
+12. Whether Google Drive upload was genuinely verified.
+13. Whether scheduled backups are genuinely configured.
+14. Whether an actual Android APK was generated.
+15. All remaining external setup requirements.
+
+List every incomplete requirement individually.
+
+Do not say "everything is complete" when any required feature remains incomplete.
+
+---
+
+# FINAL STRICT WARNING
+
+**FIRST INSPECT THE ACTUAL SOURCE CODE ZIP.**
+
+**THEN COMPARE THE EXISTING CODE AGAINST EVERY REQUIREMENT IN THIS PROMPT.**
+
+**THEN FIX THE MISSING OR INCORRECT IMPLEMENTATIONS IN THE EXISTING VYAPAR ONE ERP.**
+
+Do not recreate the ERP.
+
+Do not destroy production data.
+
+Do not simulate Google Drive backups.
+
+Do not expose private records or passwords.
+
+Do not declare a feature complete just because its UI exists.
+
+**LABOUR ATTENDANCE REGISTER MUST INCLUDE DAILY ATTENDANCE, PROJECT-WISE REGISTER, MONTHLY REGISTER, LABOUR-WISE HISTORY, ATTENDANCE CORRECTIONS, ACTUAL DATABASE SAVING, ATTENDANCE SUMMARIES, AND PRINT/DOWNLOAD FUNCTIONALITY.**
+
+Do not replace this complete attendance requirement with a basic Present/Absent dropdown.
+
+**DO NOT SKIP CUSTOMER MANAGEMENT, SATISFIED CUSTOMERS, LABOUR ATTENDANCE, ACCOUNTING, REPORT HISTORY, A4 REPORTS, MULTI-COMPANY SECURITY, GOOGLE DRIVE BACKUP, OR APK VERIFICATION.**
+
+Fix the incomplete work first. Verify each module. Preserve existing functionality and production data. Provide the full requirement-by-requirement completion report before declaring the task complete.

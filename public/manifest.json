@@ -1,0 +1,25 @@
+{
+  "name": "VYAPAR ONE ERP - Real Estate & Construction Management",
+  "short_name": "VyaparOne ERP",
+  "description": "Complete Real Estate & Construction Management ERP for web and mobile with live cloud synchronization.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "categories": ["business", "productivity", "finance"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,855 @@
+# VYAPAR ONE ERP
+## COMPLETE EXISTING SOFTWARE CORRECTION & FEATURE ENHANCEMENT PROMPT
+
+### CRITICAL INSTRUCTION 1: OFFICIAL SOFTWARE NAME
+
+The official and permanent name of this software is:
+
+**VYAPAR ONE ERP**
+
+The previous name "Vishwas Developers ERP" was incorrect for this project.
+
+You MUST correct the application branding throughout the existing project.
+
+Apply the following rules:
+
+1. Display **VYAPAR ONE ERP** as the application name.
+2. Update the application header, sidebar, dashboard, login page, browser tab title, and other visible branding locations.
+3. Update the existing logo text or application title wherever the incorrect name appears.
+4. Update the appropriate application metadata and PWA manifest name, if the existing application has a PWA manifest.
+5. If the existing application has a configurable Company Master, keep the company name separate from the software product name.
+6. Do not automatically replace the company's legal name with VYAPAR ONE ERP.
+7. Search the existing source code for the incorrect application branding and update only the relevant application-name references.
+8. Do not rename unrelated customer, vendor, project, or company records.
+9. Do not rename the existing database, delete the database, or recreate the application just to change its name.
+10. Do not create a new project or a separate application.
+11. Do not change the live application URL unless explicitly required and authorized.
+12. Do not leave "Vishwas Developers ERP" displayed as the software name anywhere in the application interface.
+
+Before making changes, inspect the existing project and identify the places where the application name is configured.
+
+The final application name must consistently be:
+
+**VYAPAR ONE ERP**
+
+---
+
+# CRITICAL INSTRUCTION 2: MODIFY THE EXISTING SOFTWARE ONLY
+
+The existing VYAPAR ONE ERP application has already been developed and published.
+
+I do NOT want a new project, a new application, or a complete rewrite.
+
+Your task is to implement ONLY the corrections and additional features described below.
+
+STRICT RULES:
+
+1. Preserve the existing working software, project structure, database, authentication, routing, and business logic wherever possible.
+2. Do not remove, replace, or damage any existing working feature.
+3. Do not delete existing records or reset the database.
+4. Do not replace real database operations with mock data, sample data, or temporary localStorage implementations.
+5. Reuse existing database tables and components wherever appropriate.
+6. Add only the features described in this prompt. Do not introduce unnecessary modules or complicated workflows.
+7. Keep the software easy to understand and operate for normal office staff.
+8. Use a professional, attractive, colourful but balanced user interface.
+9. Maintain consistent terminology, buttons, tables, forms, dropdowns, reports, and navigation throughout the application.
+10. Every Add, Save, Edit, View, Delete, Print, and Download operation must actually work.
+11. Do not display a success message unless the operation has genuinely completed.
+12. Preserve existing user accounts, permissions, project records, customer records, payment records, material records, and other business data.
+13. Before changing database structures, inspect the existing schema and use safe, backward-compatible migrations wherever possible.
+14. Do not expose API keys, credentials, or private database information in the frontend.
+15. Do not claim that a feature is implemented until it has been tested.
+16. If a requested feature depends on an external service, explain the required configuration rather than pretending it is connected.
+17. Do not modify unrelated modules.
+18. Do not change the existing application URL or deployment configuration unless absolutely necessary.
+19. All new dropdown values must be stored persistently and remain available after refreshing or reopening the application.
+20. Complete the changes in the existing project, not in a separate demonstration project.
+
+---
+
+# MODULE 1: PROJECT MANAGEMENT
+
+Keep the existing Project Management module and its current working functionality.
+
+## A. Add New Project Form
+
+### 1. Project Name
+- Keep the Project Name field.
+- The user will enter the project name manually.
+
+### 2. Project Code
+- Generate the Project Code automatically after the project name is entered or the new project is initialized.
+- Every project code must be unique.
+- Do not ask the user to enter the project code manually.
+- Prevent duplicate project codes.
+
+### 3. Project Type
+- Provide a dropdown for Project Type.
+- Add an Add New option directly inside the dropdown.
+- When the user adds a new project type, save it to the central Master Settings module.
+- Refresh the dropdown automatically and select the newly added value.
+- The new type must also be available anywhere else that uses the same master.
+
+### 4. Project Address and Location
+- Keep the existing Project Address and Location fields unchanged.
+
+### 5. Start Date
+- Keep the existing Start Date functionality unchanged.
+
+### 6. Status
+- Keep the existing project status functionality unchanged.
+- Preserve the current status options and behaviour.
+
+## B. Planned Units: Replace the Existing Arrangement
+
+Replace the existing Planned Units arrangement with a property-unit entry table.
+
+The user should be able to add multiple plots or units within a project using an Add New button.
+
+The table must contain:
+
+1. Plot Number
+2. Plot Area in Sq. Mtr.
+3. Plot Area in Sq. Feet
+4. Location/Position
+5. Remarks
+6. Action
+
+### Required Behaviour
+
+**Plot Number**
+- Enter the plot number manually.
+- Prevent duplicate plot numbers within the same project where appropriate.
+
+**Plot Area in Sq. Mtr.**
+- Allow the user to enter the area in square metres.
+
+**Plot Area in Sq. Feet**
+- Calculate automatically using:
+  1 square metre = 10.7639 square feet.
+- Use consistent rounding throughout the application.
+- Do not ask the user to calculate square feet manually.
+
+**Location/Position**
+- Allow the user to specify the plot position, such as Front, Back, Corner, or another position.
+- If a dropdown is used, it must support Add New and update the central master.
+
+**Remarks**
+- Provide a free-text field.
+
+**Add New**
+- Add another row to the table.
+- Allow as many plots or units as required.
+
+**Action**
+- Allow the user to edit or remove a row before saving the project.
+- Prevent accidental removal of already-linked business records.
+
+### Project Notes
+Keep the existing Project Notes field unchanged.
+
+### Save Project
+- Save all project details and all property-unit rows together.
+- Validate required fields.
+- Do not lose entered rows when the user saves.
+- Display the saved project in the project list.
+- Reopening the project must show the same saved details.
+
+## C. Project List and Project Details
+
+Preserve the existing Edit and Deactivate options.
+
+Add a Delete Project option.
+
+### Safe Project Deletion Procedure
+
+1. The user clicks Delete Project.
+2. Display a warning that deletion may affect associated project data.
+3. Ask the user to enter the authorized mobile number.
+4. The configured authorization number is **7666257368**.
+5. Require appropriate administrator permission.
+6. Do not treat merely entering this number as secure identity verification. If actual verification is required, implement a genuine OTP or equivalent verification process.
+7. Require explicit confirmation before deletion.
+8. Before deleting anything, generate a downloadable CSV backup of the selected project's associated business records.
+9. Include related records such as property units, customer bookings, payment schedules, receipts, project-linked material transactions, vendor transactions, labour records, adviser commissions, and other associated records wherever applicable.
+10. Generate the backup using actual database records, not sample data.
+11. Display a clear download option.
+12. Do not execute deletion until the backup has been generated successfully and the user has had an opportunity to download it and confirm proceeding.
+13. If backup generation fails, cancel the deletion.
+14. If associated records cannot be backed up safely, stop and explain the problem.
+15. After successful backup and confirmation, delete or archive the project and associated records according to the existing database relationships and approved business rules.
+16. Ensure unrelated projects and records remain untouched.
+17. Record the operation in an audit log.
+
+If records are shared with other projects, use a safe archival or soft-delete strategy rather than deleting records belonging to other projects.
+
+---
+
+# MODULE 2: CUSTOMER ENTRY
+
+Keep the existing Customer Entry form, layout, and correctly working customer-detail fields.
+
+## A. Customer Information
+
+- Keep the existing Add New operation.
+- Keep all currently working customer-detail fields.
+- Add an option to upload a Customer Image.
+- Allow image preview and replacement.
+- Save the image using the application's existing secure storage system.
+- Reopening the customer record must display the saved image.
+- Do not make customer images publicly accessible without authorization.
+
+## B. Property Details
+
+### Project Name
+Keep the existing Project Name field and display projects saved in Project Management.
+
+### Property Type
+- Keep the Property Type dropdown.
+- Add an Add New option directly inside the dropdown.
+- Save the new property type in Master Settings.
+- Refresh the dropdown and select the new value automatically.
+
+### Available Plot/Property Selection
+- Keep the existing property-selection functionality.
+- Add an Add New Plot option wherever required.
+- Save the new plot against the selected project.
+- Update the central property records so the plot becomes available throughout the application.
+- Prevent duplicate plots and inconsistent copies of the same property.
+
+## C. Property-Type-Specific Fields
+
+Dynamically show the correct fields according to the selected Property Type.
+
+### When Property Type = Plot
+
+Display:
+
+1. Project Name
+2. Plot Number
+3. Plot Area in Sq. Feet
+4. Plot Area in Sq. Mtr.
+5. Rate per Sq. Feet
+6. Base Property Price
+7. Development Charges
+8. Final Property Price
+
+Take the plot's area and base pricing details from the selected plot's saved property record.
+
+Calculate:
+
+**Development Charges = Plot Area in Sq. Feet × Development Charge Rate per Sq. Feet**
+
+Example:
+
+- Plot Area = 1,000 square feet
+- Development Charge Rate = ₹100 per square foot
+- Development Charges = ₹1,00,000
+
+The rate must be configurable through the appropriate master setting.
+
+Use ₹100 per square foot as the initial default only if no existing rate is configured.
+
+Do not automatically add electrical meter charges, water connection charges, or other extra charges to a plot booking unless the user explicitly adds them.
+
+### When Property Type = Flat, Villa, Farmhouse, or Row House
+
+Display the applicable property information.
+
+Provide an Add New Charge option for:
+
+- Electrical Meter Charges
+- Water Connection Charges
+- Other Charges
+
+The user must be able to enter the charge name and amount.
+
+Save the charge with the booking and include it in the price calculation.
+
+Optional charges must not be mandatory.
+
+## D. Property Selection Behaviour
+
+- Selecting a plot must display the plot-specific details.
+- Selecting a flat, villa, farmhouse, or row house must display the corresponding property information and applicable additional-charge fields.
+- Do not display plot-only fields unnecessarily for other property types.
+
+## E. Booking and Initial Payment
+
+Rename the Token Amount field to **First Payment**.
+
+- First Payment replaces Token Amount in the customer-entry workflow.
+- Remove the separate Down Payment field from this workflow.
+- Do not remove historical token or down-payment records.
+- Preserve old records and migrate labels or mappings safely if necessary.
+
+### EMI / Payment Schedule
+
+After the First Payment field, provide an option to create an EMI/payment schedule.
+
+The user must be able to add multiple payment rows using Add New Pay.
+
+Each row must contain:
+
+1. Payment/Installment Description
+2. Due Date
+3. Amount
+4. Paid Date
+5. Payment Status
+6. Action
+
+Required behaviour:
+
+- Allow the user to enter the due date.
+- Allow the user to enter the amount.
+- Allow the user to enter the actual paid date when payment is received.
+- Treat Due Date as the scheduled payment date, not the actual receipt date.
+- Calculate the outstanding amount correctly.
+- Support multiple instalments.
+- Add New Pay must create another row.
+- Allow rows to be edited or removed before finalizing the schedule.
+- Protect completed payment history from accidental deletion.
+- Keep scheduled amounts and actual receipts separate.
+- Do not count an unpaid instalment as money received.
+- Prevent duplicate receipt entries.
+
+## F. Customer Entry Save and Print Buttons
+
+Provide two separate buttons at the bottom of the Customer Entry form:
+
+1. Save
+2. Save and Print
+
+**Save**
+- Save the customer, booking, property allocation, extra charges, adviser assignment, first payment, and payment schedule.
+- Do not print automatically.
+
+**Save and Print**
+- Save the complete customer entry first.
+- After successful saving, open a printable customer booking summary.
+- Include property details, pricing, payment schedule, and other relevant booking information.
+- If saving fails, do not open a misleading print preview.
+
+## G. Adviser Assignment and Commission
+
+Keep the existing Adviser dropdown and Add Adviser option.
+
+Provide a Commission Type selection:
+
+1. Lump Sum
+2. Per Sq. Feet
+
+### Lump Sum
+- Ask for the agreed commission amount.
+- Save the commission against the adviser, booking, and property.
+
+### Per Sq. Feet
+- Ask for the commission rate per square foot if it is not already configured.
+- Calculate:
+  Commission = Plot Area in Sq. Feet × Commission Rate per Sq. Feet.
+
+Do not add adviser commission to the customer's property price.
+
+Keep customer charges and adviser commission separate.
+
+Do not assume a commission rate that the user has not configured.
+
+---
+
+# MODULE 3: MASTER SETTINGS
+
+Create one centralized Master Settings module, or extend the existing one if it already exists.
+
+Do not create multiple disconnected masters for the same dropdown values.
+
+## A. Central Master Data
+
+Include relevant master categories such as:
+
+- Project Type
+- Property Type
+- Plot Position/Location
+- Project
+- Plot/Property
+- Vendor
+- Material
+- Labour Category, if applicable
+- Adviser
+- Payment Type
+- Expense Category
+- Income Category
+- Other dropdown categories already used in the existing application
+
+Do not duplicate master categories that already exist.
+
+## B. Add New Behaviour
+
+Whenever a dropdown supports Add New:
+
+1. Open a simple entry form or modal.
+2. Ask for the new value.
+3. Validate the value.
+4. Save it to the correct database master.
+5. Refresh the dropdown automatically.
+6. Select the newly added value.
+7. Make it available in every other relevant module.
+8. Preserve it after refreshing or reopening the application.
+
+Do not require the user to add the same value separately in multiple modules.
+
+## C. Master List Management
+
+Allow authorized users to:
+
+- View master records.
+- Add records.
+- Edit records.
+- Deactivate records.
+- Search and filter records.
+
+Prevent duplicates where uniqueness is required.
+
+If a master record is already used in business transactions, do not permanently delete it in a way that breaks historical records.
+
+---
+
+# MODULE 4: PLOT / FLAT MANAGEMENT
+
+Keep the existing Plot/Flat Management module and its working features.
+
+## A. Property Details Table
+
+Display:
+
+1. Project Name
+2. Property Type
+3. Plot/Flat Number
+4. Area in Sq. Mtr.
+5. Area in Sq. Feet
+6. Rate per Sq. Feet
+7. Total/Base Property Price
+8. Current Status
+9. Action
+
+### Area Calculation
+- Allow area entry in square metres.
+- Calculate square feet automatically using 1 square metre = 10.7639 square feet.
+- Use the same conversion and rounding rules throughout the application.
+- Do not produce inconsistent calculations in different modules.
+
+### Pricing
+
+Calculate:
+
+**Base Property Price = Area in Sq. Feet × Rate per Sq. Feet**
+
+Preserve any existing approved pricing method for other property types where appropriate.
+
+### Negotiated Price
+
+During Customer Entry, allow authorized users to enter a Negotiated Price for the selected property.
+
+- The negotiated price may be higher or lower than the base property price.
+- Require the appropriate permission to change the agreed selling price.
+- Store the original base price separately.
+- Store a change history where practical.
+- Do not overwrite the base price when a customer receives a discount.
+- The booking's final price must use the approved selling price plus only the actual extra charges entered for that booking.
+
+Example:
+
+Base Property Price = ₹10,00,000
+
+Negotiated Selling Price = ₹9,50,000
+
+Extra Charges = ₹0
+
+Final Customer Price = ₹9,50,000
+
+## B. Dashboard Property Counts
+
+Make the existing property summary cards interactive.
+
+### Available Units
+Show available properties, filterable by project, property type, plot/flat number, and status.
+
+### Booked Units
+Show booked properties and relevant customer/booking details.
+
+### Reserved/Hold Units
+Show reserved or held properties separately according to the existing status model.
+
+### Other Existing Statuses
+Preserve all existing property statuses and their meanings.
+
+Dashboard counts must match actual database records.
+
+Do not count one property multiple times.
+
+## C. Property Actions
+
+Add an Action column with:
+
+- View
+- Edit
+- Delete
+
+Rules:
+
+- View opens the complete property details.
+- Edit allows authorized users to update property information.
+- Delete requires confirmation and dependency checks.
+- If a property is linked to a booking, receipt, or financial transaction, prevent unsafe permanent deletion.
+- Allow deactivation or archival where appropriate.
+
+---
+
+# MODULE 5: MATERIAL MANAGEMENT
+
+Keep the existing Material Management module and its working stock calculations.
+
+Do not create a separate Inventory Management menu if material stock is already managed inside Material Management.
+
+## A. Stock Report Actions
+
+Add an Action column to the existing Stock Report:
+
+1. View
+2. Edit
+3. Delete
+
+Add the same Action column to Material History:
+
+1. View
+2. Edit
+3. Delete
+
+### View
+Open the complete material or transaction details.
+
+### Edit
+Allow authorized users to edit the selected record.
+
+If the transaction affects stock or accounts, update all linked calculations and balances correctly.
+
+### Delete
+Require confirmation.
+
+Prevent deletion where it would corrupt stock history, linked bills, payments, or accounts.
+
+Use safe reversals or archival workflows where required.
+
+## B. Material Details
+
+When the user clicks a material in the Stock Report, display:
+
+- Material Name
+- Opening Stock
+- Quantity Purchased
+- Quantity Actually Received
+- Quantity Used
+- Remaining Stock
+- Purchase Value
+- Usage Value
+- Linked Vendors
+- Purchase Bills
+- Payment History
+- Outstanding Amount
+- Project-wise Details
+- Date-wise History
+
+Use the existing supported unit system.
+
+Do not mix incompatible units or invent conversions.
+
+## C. Vendor-wise Material Information
+
+For each material, show:
+
+- Vendors who supplied it.
+- Quantity purchased from each vendor.
+- Quantity actually received.
+- Bill amount.
+- Amount paid.
+- Remaining amount payable.
+- Payment dates.
+- Associated bills and transactions.
+
+Only show actual transactions belonging to the selected material.
+
+---
+
+# MODULE 6: VENDOR MANAGEMENT
+
+Create a separate Vendor Management module.
+
+Add a dedicated Vendor Management menu item to the existing main navigation.
+
+Do not hide Vendor Management inside Material Management or Accounts.
+
+## A. Add Vendor
+
+Provide an Add Vendor form containing relevant fields:
+
+- Vendor Name
+- Contact Person
+- Mobile Number
+- Address
+- GSTIN, where applicable
+- Email, if required
+- Vendor Type
+- Status
+- Remarks
+
+Reuse existing vendor fields if already present.
+
+Validate required information and prevent duplicate vendor records where appropriate.
+
+Save each vendor in the central database.
+
+## B. Vendor List
+
+Display:
+
+- Vendor Name
+- Mobile Number
+- GST Status
+- Materials Supplied
+- Total Bill Value
+- Total Paid
+- Outstanding Balance
+- Status
+- Action
+
+Provide search, filters, and date/project filters where appropriate.
+
+## C. GST and Non-GST Bills
+
+Support:
+
+1. Bills with GST
+2. Bills without GST
+
+Maintain separate filtering and reporting for both categories.
+
+For GST bills, record applicable tax information using the existing tax model.
+
+For non-GST bills, allow the user to record actual bill details without forcing a GST amount.
+
+Do not invent GSTINs or tax rates.
+
+Do not classify a bill as GST-eligible merely because the vendor has a GSTIN. Record the actual bill classification.
+
+Provide separate lists or filters for GST and non-GST bills.
+
+## D. Vendor Bill Entry
+
+Allow users to record:
+
+- Vendor
+- Material
+- Project
+- Bill Number
+- Bill Date
+- GST/Non-GST Classification
+- Quantity Billed
+- Quantity Actually Received
+- Unit
+- Rate
+- Tax Details, if applicable
+- Total Bill Amount
+- Bill Attachment
+- Payment Terms
+- Due Date
+- Remarks
+
+Allow multiple material lines against one bill if supported by the existing database design.
+
+Bill attachments must be uploadable, viewable, and downloadable by authorized users.
+
+## E. Vendor Payments
+
+Provide vendor payment entry and payment history.
+
+Each payment must be linked to the appropriate vendor and bill or bills.
+
+Record:
+
+- Payment Date
+- Amount
+- Payment Method
+- Cash/Bank Account
+- Reference Number
+- Related Bill
+- Remarks
+
+Allow partial payments.
+
+Calculate the outstanding balance correctly:
+
+**Outstanding Balance = Valid Bill Amount − Payments Allocated to That Bill**, subject to valid adjustments and credit notes.
+
+Do not count one payment twice.
+
+## F. Vendor Ledger
+
+When a vendor is selected, show:
+
+- All bills from that vendor.
+- Materials supplied by that vendor.
+- Bill-wise amounts.
+- Amount paid against each bill.
+- Remaining balance against each bill.
+- Total outstanding amount.
+- Payment history.
+- Purchase history.
+- Bill attachments.
+
+Only display transactions belonging to the selected vendor.
+
+## G. Vendor Action Column
+
+Provide:
+
+- View
+- Edit
+- Delete
+
+Prevent unsafe deletion of vendors with historical bills or payments.
+
+Use deactivation or archival where required.
+
+---
+
+# MODULE 7: LABOUR MANAGEMENT
+
+Keep the existing Labour Management functionality and extend it as follows.
+
+## A. Add Labour
+
+Provide an Add Labour form with:
+
+- Labour Name
+- Mobile Number, if available
+- Address, if required
+- Labour Category
+- Wage Rate
+- Wage Type
+- Payment Frequency
+- Joining Date
+- Project Assignment
+- Status
+- Remarks
+
+Allow authorized users to add labour records.
+
+Save each record in the central database.
+
+## B. Labour List
+
+Display:
+
+- Labour Name
+- Project
+- Wage Rate
+- Payment Frequency
+- Total Attendance
+- Total Earnings
+- Total Advances
+- Total Paid
+- Outstanding Amount
+- Active/Inactive Status
+- Action
+
+Provide search and filtering.
+
+## C. Daily Attendance
+
+Allow users to record attendance for multiple labourers on a selected date.
+
+Support attendance statuses such as:
+
+- Present
+- Absent
+- Half Day
+- Leave
+
+Preserve existing attendance categories where appropriate.
+
+Record the project and date.
+
+Prevent accidental duplicate attendance entries for the same labourer, project, and date unless the existing system intentionally supports multiple shifts.
+
+## D. Attendance Sheet Download
+
+Provide a Download Attendance Sheet option.
+
+Allow CSV download containing:
+
+- Date
+- Labour Name
+- Project
+- Attendance Status
+- Wage Rate
+- Calculated Daily Earnings, where applicable
+
+Allow filtering by project, date range, and labourer.
+
+Downloaded records must match the selected filters.
+
+## E. Labour Payment Frequency
+
+Support:
+
+1. Weekly
+2. Every 15 Days
+3. Monthly
+
+The selected frequency must determine the payment period and due-payment reporting.
+
+Allow authorized users to change the frequency.
+
+Do not assume that all labourers have the same payment frequency.
+
+## F. Labour Ledger
+
+When a labourer is selected, show:
+
+- Attendance History
+- Month-wise Attendance
+- Earnings History
+- Advance Payments
+- Weekly/15-Day/Monthly Payments
+- Total Amount Earned
+- Total Amount Paid
+- Outstanding Amount
+- Payment Dates
+- Project-wise Work History
+
+Calculate earnings using the configured wage rules and recorded attendance.
+
+Do not treat an advance as a second payment when calculating outstanding amounts.
+
+## G. Labour Status and Exit
+
+Provide an option to deactivate a labourer immediately.
+
+When deactivated:
+
+- Exclude the labourer from future active attendance lists.
+- Preserve complete attendance and payment history.
+- Preserve outstanding advances and amounts owed.
+- Allow the user to view and settle the final account.
+- Do not permanently delete historical records.
+
+Provide View, Edit, and safe Delete/Deactivate actions as appropriate.
+
+---
+
+# MODULE 8: ADVISER MANAGEMENT
+
+Keep the existing Adviser Management module and improve its reporting, commission calculations, and payment history.
+
+## A. Adviser List
+
+Display

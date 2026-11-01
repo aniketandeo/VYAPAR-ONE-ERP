@@ -1,0 +1,151 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default Deny All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helper Functions ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email == 'aniket.andeo35@gmail.com' && request.auth.token.email_verified == true) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Admin collection
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && (request.auth.uid == adminId || isAdmin());
+      allow write: if isAdmin() && isValidId(adminId);
+    }
+
+    // Consolidated ERP State (for multi-device instant live sync)
+    match /erp_state/{docId} {
+      allow read, write: if true;
+    }
+
+    // Company Settings
+    match /company/{docId} {
+      allow read, write: if true;
+    }
+
+    // Master Settings
+    match /masterSettings/{docId} {
+      allow read, write: if true;
+    }
+
+    // Projects
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(projectId);
+      allow delete: if isAdmin() && isValidId(projectId);
+    }
+
+    // Properties (Plots / Flats)
+    match /properties/{propertyId} {
+      allow read: if true;
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(propertyId);
+      allow delete: if isAdmin() && isValidId(propertyId);
+    }
+
+    // Customers
+    match /customers/{customerId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(customerId);
+      allow delete: if isAdmin() && isValidId(customerId);
+    }
+
+    // Bookings
+    match /bookings/{bookingId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(bookingId);
+      allow delete: if isAdmin() && isValidId(bookingId);
+    }
+
+    // Customer Receipts
+    match /customerReceipts/{receiptId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(receiptId);
+      allow delete: if isAdmin() && isValidId(receiptId);
+    }
+
+    // Materials
+    match /materials/{materialId} {
+      allow read: if true;
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(materialId);
+      allow delete: if isAdmin() && isValidId(materialId);
+    }
+
+    // Material Purchases
+    match /materialPurchases/{purchaseId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(purchaseId);
+      allow delete: if isAdmin() && isValidId(purchaseId);
+    }
+
+    // Vendors
+    match /vendors/{vendorId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(vendorId);
+      allow delete: if isAdmin() && isValidId(vendorId);
+    }
+
+    // Labour
+    match /labours/{labourId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(labourId);
+      allow delete: if isAdmin() && isValidId(labourId);
+    }
+
+    // Advisers
+    match /advisers/{adviserId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(adviserId);
+      allow delete: if isAdmin() && isValidId(adviserId);
+    }
+
+    // Expenses
+    match /expenses/{expenseId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(expenseId);
+      allow delete: if isAdmin() && isValidId(expenseId);
+    }
+
+    // Transactions
+    match /transactions/{txnId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create, update: if (isSignedIn() || isAdmin()) && isValidId(txnId);
+      allow delete: if isAdmin() && isValidId(txnId);
+    }
+
+    // Audit Logs
+    match /auditLogs/{logId} {
+      allow read: if isSignedIn() || isAdmin();
+      allow create: if (isSignedIn() || isAdmin()) && isValidId(logId);
+      allow update, delete: if false; // Append-only audit logs
+    }
+
+    // Connection testing
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

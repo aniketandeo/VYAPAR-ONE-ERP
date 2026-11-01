@@ -1,0 +1,7 @@
+{
+  "name": "VYAPAR ONE ERP",
+  "description": "Complete Real Estate & Construction Management ERP for web and mobile with projects, plots/flats, materials, vendor management, labour, advisers, and accounts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

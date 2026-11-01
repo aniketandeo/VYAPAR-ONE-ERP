@@ -1,0 +1,331 @@
+{
+  "entities": {
+    "CompanySettings": {
+      "title": "CompanySettings",
+      "description": "Enterprise company branding and banking credentials",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string", "maxLength": 200 },
+        "companyAddress": { "type": "string", "maxLength": 500 },
+        "mobileNumber": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 100 },
+        "businessNature": { "type": "string", "maxLength": 200 },
+        "gstNumber": { "type": "string", "maxLength": 50 },
+        "companyLogoUrl": { "type": "string", "maxLength": 1000 },
+        "bankName": { "type": "string", "maxLength": 100 },
+        "accountNumber": { "type": "string", "maxLength": 50 },
+        "ifscCode": { "type": "string", "maxLength": 50 },
+        "bankBranch": { "type": "string", "maxLength": 100 },
+        "upiId": { "type": "string", "maxLength": 100 },
+        "receiptHeader": { "type": "string", "maxLength": 200 },
+        "invoiceHeader": { "type": "string", "maxLength": 200 },
+        "receiptFooterNote": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["companyName", "mobileNumber"]
+    },
+    "MasterSettings": {
+      "title": "MasterSettings",
+      "description": "Configurable dropdown presets and default rates",
+      "type": "object",
+      "properties": {
+        "defaultDevelopmentChargeRate": { "type": "number" }
+      }
+    },
+    "EmployeeUser": {
+      "title": "EmployeeUser",
+      "description": "System user account with role permissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "username": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 50 },
+        "mobile": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 100 },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "name", "role", "active"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Real estate construction project or land plotting layout",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "code": { "type": "string", "maxLength": 50 },
+        "address": { "type": "string", "maxLength": 500 },
+        "type": { "type": "string", "maxLength": 100 },
+        "startDate": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 50 },
+        "totalUnits": { "type": "number" },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "createdBy": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "name", "code", "status"]
+    },
+    "Property": {
+      "title": "Property",
+      "description": "Individual plot, flat, shop, or villa in a project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "projectId": { "type": "string", "maxLength": 128 },
+        "projectName": { "type": "string", "maxLength": 200 },
+        "propertyType": { "type": "string", "maxLength": 100 },
+        "number": { "type": "string", "maxLength": 100 },
+        "areaSqMtr": { "type": "number" },
+        "areaSqFt": { "type": "number" },
+        "ratePerSqFt": { "type": "number" },
+        "totalPrice": { "type": "number" },
+        "status": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "projectId", "number", "totalPrice", "status"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Property buyer or investor record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "address": { "type": "string", "maxLength": 500 },
+        "mobileNumber": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "name", "mobileNumber"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Property sale booking with payment and schedule terms",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "bookingRef": { "type": "string", "maxLength": 100 },
+        "customerId": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 200 },
+        "projectId": { "type": "string", "maxLength": 128 },
+        "projectName": { "type": "string", "maxLength": 200 },
+        "propertyId": { "type": "string", "maxLength": 128 },
+        "propertyNumber": { "type": "string", "maxLength": 100 },
+        "bookingDate": { "type": "string", "maxLength": 50 },
+        "finalTotalAmount": { "type": "number" },
+        "amountReceived": { "type": "number" },
+        "remainingBalance": { "type": "number" },
+        "paymentMode": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "bookingRef", "customerId", "projectId", "propertyId", "finalTotalAmount", "status"]
+    },
+    "CustomerPaymentReceipt": {
+      "title": "CustomerPaymentReceipt",
+      "description": "Money receipt issued for customer booking payment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "receiptNumber": { "type": "string", "maxLength": 100 },
+        "customerId": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 200 },
+        "bookingId": { "type": "string", "maxLength": 128 },
+        "amount": { "type": "number" },
+        "paymentMode": { "type": "string", "maxLength": 50 },
+        "paymentDate": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "receiptNumber", "customerId", "bookingId", "amount"]
+    },
+    "MaterialItem": {
+      "title": "MaterialItem",
+      "description": "Construction raw material inventory item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "unit": { "type": "string", "maxLength": 50 },
+        "currentStock": { "type": "number" }
+      },
+      "required": ["id", "name", "unit"]
+    },
+    "MaterialPurchaseBill": {
+      "title": "MaterialPurchaseBill",
+      "description": "Supplier purchase bill with material quantities and payment due",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "billNumber": { "type": "string", "maxLength": 100 },
+        "billDate": { "type": "string", "maxLength": 50 },
+        "projectId": { "type": "string", "maxLength": 128 },
+        "vendorId": { "type": "string", "maxLength": 128 },
+        "vendorName": { "type": "string", "maxLength": 200 },
+        "billTotal": { "type": "number" },
+        "amountPaid": { "type": "number" },
+        "outstandingAmount": { "type": "number" }
+      },
+      "required": ["id", "billNumber", "projectId", "vendorId", "billTotal"]
+    },
+    "Vendor": {
+      "title": "Vendor",
+      "description": "Material supplier or construction contractor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "businessName": { "type": "string", "maxLength": 200 },
+        "mobileNumber": { "type": "string", "maxLength": 50 },
+        "currentOutstanding": { "type": "number" }
+      },
+      "required": ["id", "name", "mobileNumber"]
+    },
+    "Labour": {
+      "title": "Labour",
+      "description": "Construction site worker or supervisor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "labourType": { "type": "string", "maxLength": 100 },
+        "projectId": { "type": "string", "maxLength": 128 },
+        "dailyRateOrSalary": { "type": "number" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "name", "labourType", "active"]
+    },
+    "Adviser": {
+      "title": "Adviser",
+      "description": "Real estate marketing agent or broker",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "mobileNumber": { "type": "string", "maxLength": 50 },
+        "commissionType": { "type": "string", "maxLength": 50 },
+        "commissionRate": { "type": "number" }
+      },
+      "required": ["id", "name", "mobileNumber"]
+    },
+    "ExpenseRecord": {
+      "title": "ExpenseRecord",
+      "description": "Site operational or project expense voucher",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "voucherNumber": { "type": "string", "maxLength": 100 },
+        "expenseDate": { "type": "string", "maxLength": 50 },
+        "projectId": { "type": "string", "maxLength": 128 },
+        "category": { "type": "string", "maxLength": 100 },
+        "totalAmount": { "type": "number" }
+      },
+      "required": ["id", "voucherNumber", "projectId", "category", "totalAmount"]
+    },
+    "FinancialTransaction": {
+      "title": "FinancialTransaction",
+      "description": "Double entry ledger transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "voucherNumber": { "type": "string", "maxLength": 100 },
+        "txnDate": { "type": "string", "maxLength": 50 },
+        "type": { "type": "string", "maxLength": 50 },
+        "debit": { "type": "number" },
+        "credit": { "type": "number" },
+        "account": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "voucherNumber", "txnDate", "type"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Security and activity audit trail entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "timestamp": { "type": "string", "maxLength": 50 },
+        "user": { "type": "string", "maxLength": 150 },
+        "action": { "type": "string", "maxLength": 100 },
+        "module": { "type": "string", "maxLength": 100 },
+        "details": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["id", "timestamp", "user", "action"]
+    },
+    "ErpState": {
+      "title": "ErpState",
+      "description": "Consolidated ERP state document for live multi-device sync",
+      "type": "object",
+      "properties": {
+        "version": { "type": "string", "maxLength": 50 },
+        "lastUpdated": { "type": "string", "maxLength": 50 },
+        "updatedBy": { "type": "string", "maxLength": 150 }
+      },
+      "required": ["version"]
+    }
+  },
+  "firestore": {
+    "/erp_state/current": {
+      "schema": "ErpState",
+      "description": "Live real-time synchronized ERP database state across web and mobile"
+    },
+    "/company/settings": {
+      "schema": "CompanySettings",
+      "description": "Company registration and banking credentials"
+    },
+    "/masterSettings/current": {
+      "schema": "MasterSettings",
+      "description": "System dropdowns and default rate configurations"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Construction and plotting projects"
+    },
+    "/properties/{propertyId}": {
+      "schema": "Property",
+      "description": "Plots, flats, and units"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Registered customers"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Property booking records"
+    },
+    "/customerReceipts/{receiptId}": {
+      "schema": "CustomerPaymentReceipt",
+      "description": "Customer money receipts"
+    },
+    "/materials/{materialId}": {
+      "schema": "MaterialItem",
+      "description": "Site material inventory"
+    },
+    "/materialPurchases/{purchaseId}": {
+      "schema": "MaterialPurchaseBill",
+      "description": "Material supplier purchase bills"
+    },
+    "/vendors/{vendorId}": {
+      "schema": "Vendor",
+      "description": "Suppliers and contractors"
+    },
+    "/labours/{labourId}": {
+      "schema": "Labour",
+      "description": "Registered site labour personnel"
+    },
+    "/advisers/{adviserId}": {
+      "schema": "Adviser",
+      "description": "Marketing agents and advisers"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "ExpenseRecord",
+      "description": "Site and company expense vouchers"
+    },
+    "/transactions/{transactionId}": {
+      "schema": "FinancialTransaction",
+      "description": "Accounting ledger entries"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Activity audit log trail"
+    }
+  }
+}

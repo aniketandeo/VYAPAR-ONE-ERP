@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#312e81" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="40" fill="url(#grad)" />
+  <!-- Construction Building Icon Outline -->
+  <path d="M48 148V72L96 44L144 72V148H48Z" fill="none" stroke="#ffffff" stroke-width="8" stroke-linejoin="round" />
+  <rect x="68" y="80" width="16" height="16" rx="2" fill="#a5b4fc" />
+  <rect x="108" y="80" width="16" height="16" rx="2" fill="#a5b4fc" />
+  <rect x="68" y="108" width="16" height="16" rx="2" fill="#a5b4fc" />
+  <rect x="108" y="108" width="16" height="16" rx="2" fill="#a5b4fc" />
+  <path d="M86 148V126H106V148" fill="#ffffff" />
+  <!-- Accent badge -->
+  <circle cx="140" cy="52" r="14" fill="#10b981" />
+  <path d="M135 52L139 56L146 48" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

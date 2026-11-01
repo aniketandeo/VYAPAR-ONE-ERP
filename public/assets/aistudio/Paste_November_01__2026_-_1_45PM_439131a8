@@ -1,0 +1,1065 @@
+# VYAPAR ONE ERP
+## COMPLETE EXISTING SOFTWARE MODIFICATION — STRICT IMPLEMENTATION INSTRUCTIONS
+
+### READ THIS ENTIRE PROMPT BEFORE MAKING ANY CHANGES.
+
+I have an existing ERP application named VYAPAR ONE ERP, built using Google AI Studio Build Mode.
+
+I have already provided detailed requirements for modifying the existing software. Previous attempts did not implement all requested changes completely. Some changes were incomplete or were not properly connected to the existing application.
+
+**THIS TIME, I REQUIRE COMPLETE IMPLEMENTATION OF EVERY REQUIREMENT IN THIS PROMPT.**
+
+Do not provide only suggestions, explanations, mockups, sample screens, or a development plan. Inspect the existing source code and implement the approved changes directly in the current project.
+
+Do not create a new ERP, a duplicate application, or a separate replacement project.
+
+The existing VYAPAR ONE ERP must remain the foundation of all work.
+
+---
+
+# SECTION 1 — STRICT RULES THAT MUST BE FOLLOWED
+
+1. Inspect the entire existing codebase before editing.
+2. Identify all existing pages, components, routes, modules, database connections, data models, functions, and business rules.
+3. Preserve all working existing features that are not explicitly being changed.
+4. Implement every requirement in this prompt. Do not silently skip any requirement.
+5. Do not replace existing functional code with placeholder functions or static demo data.
+6. Do not create buttons that look functional but do nothing when clicked.
+7. Every View, Edit, Delete, History, Download, Print, Active, and Deactivate action must perform its actual intended operation.
+8. Connect all new screens and controls to the existing application, routing, state management, and database.
+9. Use the existing database if it is suitable. Do not create a disconnected database for new modules.
+10. Do not delete, reset, overwrite, or migrate existing production records without explicit approval.
+11. Do not change existing customer IDs, plot IDs, transaction IDs, or other important identifiers unnecessarily.
+12. Do not remove existing modules, reports, formulas, calculations, or working business logic unless explicitly required.
+13. Reuse the existing deletion confirmation and verification mechanism already implemented in the software. Inspect its actual logic and preserve the intended safeguards. Do not invent a different deletion procedure.
+14. Before deleting any record that is linked to payments, receipts, plots, materials, or other transactions, prevent inconsistent accounting and explain the safe correction procedure.
+15. All changes must be reflected in the actual existing software, not merely described in a response.
+16. Keep the UI professional, attractive, organized, and easy to operate. Use consistent colors, clear status indicators, appropriate spacing, and readable tables.
+17. Keep the software name exactly as **VYAPAR ONE ERP**.
+18. After implementation, test each module and report which features were actually completed and verified.
+19. Do not claim that a feature is complete if it has only been designed but not connected to working logic.
+20. Do not stop after implementing only the first few requirements.
+
+### MANDATORY COMPLETION RULE
+
+Create an internal implementation checklist covering every numbered requirement in this prompt.
+
+Work through all modules, verify each requirement, and fix any incomplete implementation before declaring the task complete.
+
+If a requirement cannot be completed because an external service, credential, or configuration is missing, implement all possible parts, identify the exact blocker, and provide the specific remaining setup steps.
+
+Do not silently omit the requirement.
+
+---
+
+# SECTION 2 — DASHBOARD
+
+Improve the existing Dashboard.
+
+Requirements:
+
+1. Make all existing dashboard cards visually attractive with appropriate colors.
+2. Use a professional, modern, responsive UI.
+3. Ensure all displayed figures are connected to actual application data.
+4. Do not use hardcoded demo values for business totals.
+5. Make the dashboard responsive for desktop, tablet, and mobile.
+6. Preserve all existing dashboard functions.
+7. Where applicable, provide useful summaries of projects, customers, plots, materials, vendors, labour, payments, and expenses.
+
+---
+
+# SECTION 3 — PROJECT MANAGEMENT
+
+The existing Project module is acceptable, but it requires the following improvements:
+
+1. Improve the UI with professional colors and formatting.
+2. Add a clear Active/Inactive control at the top of the project details or project listing.
+3. Allow authorized users to activate or deactivate a project.
+4. Display the current project status clearly.
+5. Ensure inactive projects remain available in historical reports.
+6. Do not allow an inactive project to be selected for new operations where the business rules prohibit it.
+7. Do not delete historical records when a project is deactivated.
+8. Make sure project status changes are saved to the actual database.
+
+---
+
+# SECTION 4 — CUSTOMER ENTRY AND CUSTOMER DIRECTORY
+
+## A. Customer Entry
+
+Keep the existing New Booking buttons and workflows. They are working and should not be removed.
+
+Preserve the current customer entry process unless a change is necessary to support the requirements below.
+
+## B. Customer Directory
+
+Add functional actions to each appropriate customer row:
+
+- View
+- Edit
+- Delete
+
+Requirements:
+
+1. View must display the complete customer details.
+2. Edit must allow authorized changes and save them to the database.
+3. Delete must use the existing deletion verification mechanism already present in the software.
+4. If a customer has associated plots, bookings, payments, or receipts, do not create orphaned transactions.
+5. Preserve existing validation and customer identifiers.
+6. Refresh the directory after a successful change.
+7. Display clear success and error messages.
+
+---
+
+# SECTION 5 — PLOT/FLAT MANAGEMENT: RENAME TO CUSTOMER MANAGEMENT
+
+Inspect the existing Plot/Flat Management module and its dependencies.
+
+Change its visible module name to:
+
+**CUSTOMER MANAGEMENT**
+
+Do not accidentally rename or break unrelated database collections, routes, or internal identifiers. Update the necessary references carefully.
+
+Add these functional actions:
+
+- View
+- Edit
+- Delete
+
+## A. Attractive Customer Detail Form
+
+When View is selected, display the customer's complete details in a professional, attractive, color-coded UI.
+
+Show all relevant information available in the existing database, including:
+
+- Customer details
+- Project
+- Plot/Flat number
+- Booking information
+- Plot price
+- Payment history
+- Amount paid
+- Outstanding balance
+- Booking status
+- Full-payment status
+- Relevant receipts and transactions
+
+Do not display invented data.
+
+## B. Satisfied Customers Tab
+
+After a customer's full payment has been completed, automatically classify that customer as fully paid and display the record in a separate tab named:
+
+**SATISFIED CUSTOMERS**
+
+Requirements:
+
+1. Add a separate tab alongside the relevant existing tabs, using a layout consistent with the Dashboard and Project sections.
+2. Only customers who meet the actual full-payment condition should appear in this tab.
+3. Calculate full payment using the actual plot cost, valid recorded payments, approved adjustments, and applicable business rules.
+4. Do not classify partially paid customers as fully paid.
+5. If a refund, reversal, or correction changes the balance, recalculate the status.
+6. Keep all original customer and payment records.
+7. Avoid creating duplicate customer records when a customer enters the Satisfied Customers tab.
+8. The tab must display the actual saved data.
+
+---
+
+# SECTION 6 — MATERIAL MANAGEMENT
+
+Inspect the existing Material Management module.
+
+When a user opens transaction History, display a functional Action column for each transaction containing:
+
+- View
+- Edit
+- Delete
+
+Requirements:
+
+1. View displays complete transaction details.
+2. Edit allows authorized changes and saves them to the database.
+3. Delete uses the existing deletion verification mechanism and preserves stock/accounting consistency.
+4. Update relevant material stock balances after valid transactions.
+5. Do not allow material stock quantities to become incorrect due to edits or deletions.
+6. Preserve the transaction history and linked vendor records.
+7. Refresh the history and stock information after successful changes.
+
+---
+
+# SECTION 7 — VENDOR MANAGEMENT
+
+The existing Vendor Directory is acceptable. Preserve its current working structure and functionality.
+
+## A. Vendor Directory
+
+Keep the existing directory design and add or retain the appropriate View, Edit, and Delete operations wherever required.
+
+## B. Vendor Bills
+
+Provide complete bill management for both:
+
+- GST Bills
+- Non-GST Bills
+
+Each bill should support the fields relevant to the existing system, such as:
+
+- Vendor
+- Bill number
+- Bill date
+- GST/non-GST classification
+- Bill amount
+- Tax details, where applicable
+- Due date
+- Paid amount
+- Outstanding amount
+- Payment status
+- Attachments, if supported
+
+Add a functional Action column with:
+
+- View
+- Edit
+- Delete
+- History
+
+Requirements:
+
+1. Display overdue bills clearly after their due dates.
+2. Calculate due and outstanding amounts correctly.
+3. Keep GST and non-GST bills identifiable.
+4. Show payment history for each bill.
+5. Ensure bill payments update the relevant vendor ledger and accounting records.
+6. Preserve historical records and accounting consistency.
+7. Do not invent GST rates or tax amounts.
+
+---
+
+# SECTION 8 — LABOUR MANAGEMENT
+
+This is a critical module and must be implemented completely.
+
+Add a functional Action column with:
+
+- View
+- Edit
+- Delete
+- Labour History
+
+Also provide Active/Inactive controls for labour records.
+
+## A. Labour Details
+
+Each labour record should support the relevant existing fields, including:
+
+- Labour ID
+- Labour name
+- Contact details
+- Designation or work type
+- Assigned project
+- Joining date
+- Current working status
+- Wage/rate details, where applicable
+- Payment history
+- Attendance history
+
+## B. Project Assignment
+
+When adding or editing a labour record, provide a Project dropdown.
+
+The selected project must be saved with the labour record.
+
+The labour record must be associated with the correct project.
+
+## C. Labour Active/Inactive Status
+
+1. Allow authorized users to activate or deactivate a labour record.
+2. An inactive labourer must not appear in the Daily Attendance Sheet for new attendance entries.
+3. Preserve all past attendance and payment history.
+4. Deactivation must not delete the labour record.
+5. Reactivation should allow the labourer to appear again in eligible attendance lists.
+
+## D. Attendance Register
+
+Create a functional Attendance Register.
+
+Requirements:
+
+1. Allow attendance entry project-wise.
+2. Select a project first.
+3. Display only the eligible active labourers assigned to that project.
+4. Allow attendance to be recorded for the appropriate date.
+5. Support the attendance statuses required by the existing application, such as Present, Absent, Half Day, and Leave, if applicable.
+6. Prevent duplicate attendance records for the same labourer and project/date combination unless the application explicitly supports shifts.
+7. Save attendance to the actual database.
+8. Support viewing and correcting authorized attendance records.
+9. Preserve attendance history when labour is deactivated.
+
+## E. Labour History
+
+Provide a dropdown or selection flow that allows the user to select a project and then select a labourer associated with that project.
+
+Display the complete labour history, including:
+
+- Project assignment
+- Joining date
+- Attendance history
+- Work period
+- Payment history
+- Total amount earned, where calculable
+- Amount paid
+- Remaining payable amount, where applicable
+- Last working date, where applicable
+- Active/Inactive status
+- Deactivation date, if recorded
+
+Do not invent a leaving date or payment figure if the information is unavailable.
+
+Make the entire flow functional and connected to the actual data.
+
+---
+
+# SECTION 9 — ADVISER MANAGEMENT
+
+Keep the existing Adviser Management module and its current Ledger Statement functionality.
+
+After the Ledger Statement area, add these functional actions where appropriate:
+
+- View
+- Edit
+- Delete
+
+Do not add unrelated modules or unnecessary complexity.
+
+When creating or editing an adviser, provide a working Photo Upload option.
+
+Requirements:
+
+1. Validate the selected image type and file size.
+2. Display the uploaded photo where appropriate.
+3. Save the image using the existing supported storage architecture.
+4. Do not expose private storage credentials.
+5. Preserve the existing adviser details and ledger history.
+6. Ensure that adviser deletion or deactivation does not corrupt commission or payment records.
+
+---
+
+# SECTION 10 — ACCOUNT MANAGEMENT
+
+All accounting functionality listed in this section must remain inside the existing **ACCOUNT** module.
+
+Do not scatter accounting screens into unrelated modules.
+
+First inspect the existing Account module and its current vouchers, transactions, and database structure. Integrate the following functions with the existing accounting data.
+
+## A. Account Dashboard
+
+Display actual calculated values for:
+
+1. Total Sales
+2. Total Collection
+3. Today's Collection
+4. Today's Expenses
+5. Cash in Hand
+6. Bank Balance
+7. Total Outstanding
+8. Today's Pending Payments
+9. Total Expenses
+10. Net Profit
+
+Provide date filters:
+
+- Today
+- This Week
+- This Month
+- Financial Year
+- Custom Date Range
+
+Important: Sales, collections, outstanding balances, cash flow, and profit are different accounting measures. Do not treat them as interchangeable.
+
+Calculate each figure from the relevant saved records.
+
+## B. Customer Account / Customer Ledger
+
+Provide an individual ledger for every customer.
+
+Display available information such as:
+
+- Customer ID
+- Customer Name
+- Mobile Number
+- Project
+- Plot Number
+- Plot Cost
+- Booking Amount
+- Total Amount Paid
+- Payment Due
+- Outstanding Balance
+- Next Installment Date
+- Payment History
+- Receipt History
+- Discount, where applicable
+- Penalty/Late Fee, where applicable
+- Refund Details
+- Remarks
+
+When a customer is selected, display the complete ledger.
+
+If a customer has multiple plots, show all relevant plots and their individual balances, as well as a consolidated customer summary.
+
+Do not mix balances between different plots.
+
+## C. Payment Collection and Receipt
+
+Support:
+
+- Automatic unique Receipt Number
+- Receipt Date
+- Customer Name
+- Customer ID
+- Plot Number
+- Payment Against: Booking, EMI, Full Payment, or Other
+- Payment Amount
+- Payment Mode
+- Cash, UPI, NEFT, RTGS, or Cheque
+- Transaction ID/UTR Number, where applicable
+- Bank Account
+- Discount, where applicable
+- Late Fee, where applicable
+- Received By
+- Remarks
+- Print Receipt
+- Download PDF
+
+After a successful payment:
+
+1. Save the payment to the database.
+2. Update the relevant customer and plot ledger.
+3. Update the outstanding balance.
+4. Update the correct cash or bank account balance.
+5. Generate the receipt number.
+6. Make the receipt available for printing and PDF download.
+7. Refresh the relevant Account Dashboard totals.
+
+Prevent duplicate payment posting.
+
+A payment must not be marked successful before the database confirms the save.
+
+## D. EMI Management
+
+Support the relevant fields:
+
+- Customer Name
+- Plot Number
+- Total Plot Cost
+- Down Payment
+- EMI Amount
+- EMI Start Date
+- EMI Due Date
+- Total EMIs
+- Paid EMIs
+- Pending EMIs
+- Overdue EMIs
+- Remaining Amount
+- Next Due Date
+- Late Fee
+- Payment Status
+
+Use the appropriate statuses:
+
+- Paid
+- Pending
+- Partially Paid
+- Overdue
+- Waived
+
+Calculate EMI status from actual payments, due dates, and approved adjustments.
+
+Do not count a single payment more than once.
+
+## E. Expense Management
+
+Provide expense recording for categories such as:
+
+- Office Rent
+- Staff Salary
+- Electricity Bill
+- Office Expenses
+- Marketing Expenses
+- Commission
+- Construction Expenses
+- Legal Expenses
+- Travelling Expenses
+- Vehicle Expenses
+- Bank Charges
+- Other Expenses
+
+Support:
+
+- Voucher Number
+- Expense Date
+- Expense Category
+- Paid To
+- Description
+- Amount
+- Payment Mode
+- Cash/Bank Account
+- Bill Number
+- Bill Attachment, where supported
+- Approved By
+- Remarks
+
+Provide a printable Expense Voucher and PDF download.
+
+Record expenses against the correct cash or bank account.
+
+## F. Cash and Bank Management
+
+### Cash Book
+
+- Opening Cash
+- Cash Received
+- Cash Paid
+- Cash Balance
+
+### Bank Book
+
+- Bank Name
+- Account Name
+- Masked Account Number or necessary final digits
+- Opening Balance
+- Deposits
+- Withdrawals
+- Bank Charges
+- Current Balance
+
+### Bank Transactions
+
+Support the applicable transaction types:
+
+- Cash Deposit
+- Cash Withdrawal
+- Bank Transfer
+- Cheque Received
+- Cheque Issued
+- Cheque Bounce
+- UPI
+- NEFT
+- RTGS
+
+A transfer from Cash to Bank or Bank to Cash is an internal transfer, not income or expense by itself.
+
+Use consistent transaction references to prevent duplicate entries.
+
+## G. Other Income
+
+Provide recording for:
+
+- Interest Income
+- Rent Income
+- Service Income
+- Documentation Charges
+- Other Income
+
+Each entry must include the relevant date, description, amount, payment mode, account, and reference.
+
+Do not count the same income twice.
+
+## H. Commission Management
+
+Provide:
+
+- Adviser Name
+- Customer Name
+- Plot Number
+- Plot Sale Amount
+- Commission Rate
+- Commission Amount
+- Advance Commission Paid
+- Remaining Commission
+- Payment Date
+- Payment Voucher
+- Commission Status
+
+Allow the commission calculation basis to follow the configured company policy, such as sale amount, booking, or collected payment.
+
+Do not hardcode an arbitrary commission rule.
+
+Integrate commission payments with the correct adviser ledger and accounting entries.
+
+## I. Outstanding and Recovery Management
+
+Provide:
+
+- Customer Name
+- Plot Number
+- Total Due
+- Overdue Amount
+- Next Due Date
+- Days Overdue
+- Last Payment Date
+- Last Payment Amount
+- Follow-up Remarks
+- Recovery Status
+
+Provide overdue categories:
+
+- 1–30 Days
+- 31–60 Days
+- 61–90 Days
+- More Than 90 Days
+
+Calculate these categories dynamically from the actual due dates and balances.
+
+## J. Refund and Cancellation Management
+
+Provide:
+
+- Customer Name
+- Plot Number
+- Booking Date
+- Total Amount Received
+- Cancellation Charges
+- Refund Amount
+- Refund Mode
+- Refund Date
+- Approval Status
+- Refund Voucher
+
+Refunds must update the relevant ledger and cash/bank balances correctly.
+
+Do not erase the original receipt or payment record to represent a refund. Create a separate linked refund transaction.
+
+Require appropriate authorization before a refund is finalized.
+
+## K. Accounting Reports
+
+Provide these reports within Account:
+
+1. Day Book
+2. Cash Book
+3. Bank Book
+4. Customer Ledger
+5. Plot-wise Ledger
+6. Receipt Register
+7. Payment Register
+8. Expense Register
+9. Income Register
+10. Outstanding Report
+11. EMI Report
+12. Commission Report
+13. Refund Report
+14. Trial Balance
+15. Profit & Loss
+16. Balance Sheet
+17. Cash Flow Statement
+
+Use actual accounting entries and balances.
+
+Trial Balance, Profit & Loss, and Balance Sheet must not be fabricated by merely adding receipts and expenses. If the existing application does not contain a complete double-entry accounting structure, identify the missing components and implement a consistent accounting approach only after explaining any necessary changes.
+
+## L. Voucher Management
+
+Keep all accounting vouchers inside Account:
+
+- Receipt Voucher
+- Payment Voucher
+- Contra Voucher
+- Journal Voucher
+- Sales Voucher
+- Purchase Voucher, where applicable
+- Credit Note
+- Debit Note
+- Refund Voucher
+
+Each voucher must have an appropriate unique number, date, amount, transaction details, and linked ledger entries.
+
+## M. Accounting Rules
+
+1. Record each successful payment once.
+2. Generate unique receipt and voucher numbers.
+3. Update customer balances from valid transactions.
+4. Update the correct cash/bank balances.
+5. Record refunds separately.
+6. Preserve transaction history.
+7. Use authorized correction/reversal workflows instead of casually deleting posted accounting transactions.
+8. Maintain appropriate audit logs.
+9. Prevent duplicate posting.
+10. Support the correct financial year.
+11. Keep related transactions linked.
+12. Make the View, Edit, and Delete actions in the existing Account section functional where appropriate.
+
+---
+
+# SECTION 11 — REPORT MANAGEMENT
+
+Improve the existing Reports module.
+
+The UI must be professional, attractive, and easy to use.
+
+## A. Report Actions
+
+Provide the appropriate functional actions for each report:
+
+- View
+- Print
+- Download
+- History, wherever applicable
+
+Add a History operation at the end of each relevant report's Action column.
+
+The History screen must show the relevant saved history and transactions associated with the selected report item.
+
+Do not display fabricated history.
+
+## B. Vendor Reports
+
+Allow a user to select a specific vendor and generate a separate report for that vendor.
+
+The report must include all relevant available information, such as:
+
+- Vendor details
+- Bills
+- GST/non-GST classification
+- Material purchases
+- Payments
+- Outstanding balances
+- Transaction history
+- Relevant dates and references
+
+Allow the user to download and print the vendor report on A4 paper.
+
+## C. Material Reports
+
+Provide separate material reports for:
+
+1. Individual materials
+2. All materials together
+3. Material transactions by vendor
+4. Material transactions by project
+5. Relevant stock balances and movement history
+
+Allow the user to select the required material, vendor, project, and date range.
+
+Generate the appropriate report dynamically.
+
+## D. Dynamic Report System
+
+Do not create a separate hardcoded report layout for every possible combination.
+
+Use a reusable report system with filters, date ranges, data selection, and report templates.
+
+Reports must be based on actual saved records.
+
+## E. A4 Printing and PDF
+
+1. Provide A4 print layout.
+2. Use appropriate margins and readable font sizes.
+3. Include the company name and relevant report title.
+4. Include selected date range and generation date where applicable.
+5. Display relevant totals and subtotals.
+6. Repeat table headers across pages where supported.
+7. Prevent important columns from being unnecessarily cut off.
+8. Support print preview and PDF download where practical.
+9. Keep the output professional and suitable for business records.
+
+---
+
+# SECTION 12 — MASTER SETTINGS AND MULTI-COMPANY SYSTEM
+
+This is a critical requirement.
+
+I want the software to support up to 10 separate companies/operators using the same VYAPAR ONE ERP application.
+
+Do not confuse multiple companies with multiple users inside a single company.
+
+## A. Company Setup
+
+When a new company is onboarded:
+
+1. An authorized administrator creates or authorizes the company account.
+2. The company receives access to VYAPAR ONE ERP.
+3. The company opens Master Settings and enters its own company details.
+4. Its logo can be uploaded.
+5. Its company details should be used in its own receipts, vouchers, reports, and other relevant documents.
+
+Provide the appropriate Master Settings fields, including:
+
+- Company Name
+- Company Logo Upload
+- Address
+- Mobile Number
+- Email Address
+- Other relevant business details
+- Financial Year and settings, where applicable
+
+Keep the product/software name exactly **VYAPAR ONE ERP**. The customer company's name should be displayed in its own company documents without replacing the product name throughout the application.
+
+## B. Strict Company Data Separation
+
+Each company must only access its own authorized records.
+
+Separate company data must include, where applicable:
+
+- Customers
+- Projects
+- Plots
+- Bookings
+- Payments
+- Accounts
+- Vendors
+- Materials
+- Labour
+- Advisers
+- Reports
+- Company settings
+- Uploaded files
+
+Do not allow one company to access or edit another company's confidential data.
+
+Enforce company-level access controls in the backend/database, not just by hiding records in the UI.
+
+Do not rely solely on a company ID supplied by the frontend for authorization.
+
+## C. Login and Account Provisioning
+
+An authorized central administrator must be able to create and manage company/operator login accounts.
+
+The central administrator must be able to set an initial username and password or use a secure supported account invitation/reset flow.
+
+Operators should be able to change their own username and password only where the authentication system supports it safely.
+
+Do not store plaintext passwords.
+
+Use secure password handling and authentication supported by the existing backend.
+
+## D. Operator Management Table
+
+Inside the authorized central administration panel, provide a table showing the operators and company access that the administrator is authorized to manage.
+
+Display appropriate fields such as:
+
+- Company Name
+- Operator/Employee Name
+- Designation
+- Username
+- Email ID
+- Mobile Number
+- Assigned Company
+- Granted Access/Permissions
+- Account Status
+- Created Date, where applicable
+- Last Login, if available
+
+Do not display plaintext passwords, password hashes, authentication tokens, or other secrets.
+
+The administrator may set or reset a password through the secure authentication process, but the application must not reveal existing passwords.
+
+## E. Permissions
+
+The central administrator must be able to assign each operator only the required company access and module permissions.
+
+For example:
+
+- Account access
+- Customer access
+- Project access
+- Vendor access
+- Material access
+- Labour access
+- Adviser access
+- Report access
+- Master Settings access
+
+Only the modules and records authorized for an operator should be accessible in that operator's login.
+
+Do not expose all central administrative data to ordinary operators.
+
+## F. Active/Inactive Operator Controls
+
+Provide Active/Inactive controls in the authorized central administration panel.
+
+If a company/operator stops using the software or an employee leaves:
+
+1. The authorized administrator can deactivate the account.
+2. Access must be revoked promptly.
+3. Deactivated accounts must not be able to log in or access protected APIs.
+4. Existing company data and transaction history must remain intact.
+5. Reactivation must be limited to authorized administrators.
+6. Record the relevant status changes in an audit log.
+
+## G. Multi-Company Verification
+
+Test that:
+
+1. Company A sees only Company A's data.
+2. Company B sees only Company B's data.
+3. A user cannot access another company's records by changing a URL or request.
+4. Deactivated users lose access.
+5. Each company's logo and company details appear in its own reports and receipts.
+6. Existing data is not accidentally reassigned to another company.
+
+Do not claim that multi-company separation is complete until these checks have been performed.
+
+---
+
+# SECTION 13 — GOOGLE DRIVE BACKUP
+
+Configure an additional ERP backup in the following intended Google Drive account:
+
+**aniket.andeo35@gmail.com**
+
+Create a backup folder named:
+
+`VYAPAR ONE ERP BACKUPS`
+
+Requirements:
+
+1. Preserve the primary cloud database.
+2. Create an additional backup copy of relevant ERP records.
+3. Include appropriate customer, project, plot, booking, payment, account, vendor, material, labour, adviser, company, and transaction data.
+4. Use a documented backup format such as JSON or CSV, preserving identifiers and relationships.
+5. Use date/time-based filenames.
+6. Configure automatic scheduled backups where supported.
+7. Provide a manual backup option for authorized administrators.
+8. Maintain backup status and history.
+9. Document retention and restoration.
+10. Keep backups private.
+11. Request proper authorization for the specified Google account.
+12. Do not expose OAuth tokens or privileged credentials in frontend code or APK.
+13. Do not claim that backup is active until it has been successfully tested.
+
+If the necessary authorization or external configuration is missing, explain exactly what is required. Do not pretend the connection has already been made.
+
+---
+
+# SECTION 14 — ANDROID APK
+
+I require a directly installable Android APK for VYAPAR ONE ERP.
+
+I do not want to publish the app on Google Play Store.
+
+Requirements:
+
+1. Preserve the existing web ERP.
+2. Use the same secure backend and database as the web application.
+3. Support authorized login and access.
+4. Keep web and Android data synchronized in near real time.
+5. Do not create a disconnected second production database.
+6. Ensure the mobile interface works on normal Android phones.
+7. Generate a real installable APK if the available environment supports it.
+8. Do not describe a source ZIP as an APK.
+9. If an additional build process is needed, provide the exact build instructions.
+10. Do not claim an APK is ready unless a real APK file has been generated.
+
+---
+
+# SECTION 15 — UI/UX AND DATA QUALITY
+
+Apply a consistent professional design throughout the application.
+
+Requirements:
+
+1. Professional colors and readable typography.
+2. Clear tables and status indicators.
+3. Consistent buttons and action menus.
+4. Responsive layouts for desktop and mobile.
+5. Proper form validation.
+6. Loading, empty, success, and error states.
+7. Confirmation before destructive operations.
+8. Appropriate search, sorting, and filtering.
+9. Consistent date, number, and currency formatting.
+10. Clear validation messages.
+11. Avoid duplicate controls or broken navigation.
+12. Do not remove working existing features to simplify implementation.
+
+Every new button must be connected to its real function.
+
+---
+
+# SECTION 16 — REQUIRED TESTING
+
+After implementation, test every changed module.
+
+At minimum, verify:
+
+- Dashboard totals use actual data.
+- Project activation/deactivation works.
+- Customer View/Edit/Delete works.
+- Customer Management displays complete customer details.
+- Satisfied Customers only includes fully paid customers.
+- Material transaction actions work.
+- Vendor bills, due dates, and history work.
+- Labour project assignment works.
+- Inactive labourers do not appear in new attendance lists.
+- Attendance is saved project-wise.
+- Labour History shows relevant actual records.
+- Adviser photo upload works.
+- Account payments update the correct ledger and balances.
+- Receipts are unique and printable.
+- Expenses update the correct account.
+- Cash and bank transfers are not incorrectly counted as income or expenses.
+- Refunds preserve original transactions.
+- Reports filter correctly and export suitable A4 output.
+- Vendor and material reports can be downloaded separately.
+- Company settings and logo work.
+- Company-level data separation is enforced.
+- Deactivated operators lose access.
+- Google Drive backup is verified if configured.
+- Android APK works with the same backend if generated.
+- Existing production data remains intact.
+
+Use clearly identified test records. Do not delete or modify real production records during testing.
+
+---
+
+# SECTION 17 — FINAL IMPLEMENTATION REPORT
+
+When you finish, provide a checklist covering every requirement in this prompt.
+
+For each requirement, state one of the following:
+
+- COMPLETED AND TESTED
+- IMPLEMENTED BUT NOT FULLY TESTED
+- BLOCKED — SPECIFIC REASON
+- NOT IMPLEMENTED — EXPLAIN WHY
+
+Do not use vague statements such as "most features are completed."
+
+For every incomplete requirement, identify the exact missing component and the remaining action required.
+
+Also report:
+
+1. Which existing source files were changed.
+2. Which new source files were added.
+3. Which existing modules were preserved.
+4. Whether any database schema changes were made.
+5. Whether any data migration was performed.
+6. Whether existing production records were preserved.
+7. Whether real-time cloud synchronization was tested.
+8. Whether Google Drive backup was authorized and verified.
+9. Whether the Android APK was generated.
+10. Any external setup, permission, or billing requirements.
+
+---
+
+# FINAL STRICT WARNING
+
+**DO NOT IMPLEMENT ONLY PART OF THIS PROMPT AND THEN DECLARE THE TASK COMPLETE.**
+
+**DO NOT CHANGE THE SOFTWARE'S NAME. IT MUST REMAIN VYAPAR ONE ERP.**
+
+**DO NOT CREATE A NEW ERP OR REPLACE THE EXISTING APPLICATION.**
+
+**DO NOT DELETE, RESET, OVERWRITE, OR MIGRATE EXISTING PRODUCTION DATA WITHOUT EXPLICIT APPROVAL.**
+
+**DO NOT BUILD STATIC DEMO SCREENS IN PLACE OF REAL FUNCTIONAL FEATURES.**
+
+**DO NOT ADD BUTTONS THAT DO NOT WORK.**
+
+**DO NOT SKIP LABOUR ATTENDANCE, CUSTOMER MANAGEMENT, SATISFIED CUSTOMERS, ACCOUNTING, REPORT HISTORY, A4 REPORT DOWNLOADS, MULTI-COMPANY MASTER SETTINGS, USER PERMISSIONS, OR GOOGLE DRIVE BACKUP.**
+
+**IMPLEMENT THE REQUIRED CHANGES IN THE EXISTING CODEBASE, VERIFY EACH MODULE, AND FIX INCOMPLETE WORK BEFORE REPORTING COMPLETION.**
+
+Start by inspecting the current project and preparing an implementation checklist. Then implement the requirements systematically in the existing application. Preserve existing functionality and production data throughout the process.

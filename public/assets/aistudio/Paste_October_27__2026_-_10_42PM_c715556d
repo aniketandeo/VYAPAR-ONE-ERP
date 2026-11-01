@@ -1,0 +1,1192 @@
+PROJECT NAME: VISHWAS DEVELOPER ERP
+
+Build a Completely New Web Application and Mobile Application
+
+1. MAIN INSTRUCTION
+
+Build a completely new, professional, simple, secure, responsive Real Estate and Construction Management ERP named Vishwas Developer ERP.
+
+IMPORTANT:
+
+- This is a completely NEW project.
+- Do not modify, replace, connect to, or disturb my existing ERP project.
+- Do not reuse or overwrite the old project's files, database, settings, or code.
+- Create a separate new codebase, separate database, separate authentication system, and separate file storage.
+- Build the new software using this prompt as the complete requirements document.
+- Develop both a Web Application and a Mobile Application using the same backend and database.
+- Both applications must show the same live data after an authorized user logs in.
+- Do not create only a UI design, static prototype, or demo.
+- Implement real forms, database operations, calculations, reports, authentication, and business logic.
+- Do not use fake data or dummy dashboard figures.
+- If any external service or API requires credentials, clearly explain the setup steps instead of pretending it is connected.
+
+2. APPLICATIONS REQUIRED
+
+Create the following two applications:
+
+A. Web Application
+
+- Works on desktop computers, laptops, tablets, and mobile browsers.
+- Simple navigation and compact sidebar.
+- Responsive forms and tables.
+- Print-friendly receipts, bills, and reports.
+- Excel/CSV export for supported reports.
+- Easy-to-use dashboard.
+
+B. Mobile Application
+
+- Android-compatible mobile application.
+- Simple mobile-first design.
+- Large buttons and easy forms.
+- Separate login for each employee.
+- Customer, plot, material, payment, and expense entry from mobile.
+- View ledgers, outstanding payments, reports, and reminders.
+- Capture or upload bill images and PDF documents.
+- Share or print receipts where supported.
+- Keep the same backend and database as the Web Application.
+
+Do not create two separate databases. A transaction entered through the mobile application must also appear in the web application after it is saved successfully.
+
+Keep the architecture suitable for future expansion and app distribution. Do not publish the application to the Play Store unless specifically requested.
+
+3. SIMPLE MAIN MENU
+
+Use only these main menu items:
+
+1. Dashboard
+2. Projects
+3. Customer Entry
+4. Plot / Flat Management
+5. Material Management
+6. Labour Management
+7. Adviser Management
+8. Accounts
+9. Reports
+10. Master Settings
+
+Do not create a separate Inventory Management main menu.
+
+- Plot and flat availability should be managed under Plot / Flat Management.
+- Material stock should be managed under Material Management.
+- Vendor details should be available inside Material Management and Master Settings.
+- All financial transactions should be reflected in Accounts automatically.
+
+Keep the menu short, simple, and easy for ordinary employees to understand.
+
+4. DASHBOARD
+
+Create a professional dashboard showing real figures from the database.
+
+Display summary cards for:
+
+- Total Projects
+- Total Plots / Flats
+- Available Properties
+- Booked Properties
+- Total Customer Payments Received
+- Customer Outstanding Amount
+- Total Material Purchased
+- Total Material Used
+- Remaining Material Stock
+- Vendor Outstanding Amount
+- Labour Payments
+- Labour Outstanding Amount
+- Adviser Commission Paid
+- Adviser Commission Outstanding
+- Total Income
+- Total Expenses
+- Cash Balance
+- Bank Balance
+- Upcoming Customer Payment Due
+- Upcoming Vendor Payment Due
+
+Dashboard requirements:
+
+- All figures must come from actual database records.
+- Do not hard-code figures.
+- Clicking a card should open the relevant detailed report.
+- Provide date-wise and project-wise filters.
+- Add simple charts for monthly collections, expenses, and project performance.
+- Use a clean, professional design with limited colours.
+
+5. PROJECT MANAGEMENT
+
+Create a Projects module.
+
+Fields:
+
+- Project Name
+- Project Code
+- Project Address
+- Project Type
+- Project Start Date
+- Project Status
+- Total Plot / Flat Count
+- Project Notes
+
+Functions:
+
+- Add Project
+- Edit Project
+- View Project
+- Search Project
+- Activate / Deactivate Project
+- View project-wise customers
+- View project-wise plots and flats
+- View project-wise income and expenses
+- View project-wise material purchases and usage
+- View project-wise outstanding amounts
+
+Provide an inline “+ Add New Project” option in relevant dropdowns.
+
+After adding a new project, refresh the dropdown and automatically select the newly created project.
+
+6. CUSTOMER ENTRY – ONE SIMPLE FORM
+
+Create one easy-to-use customer form containing the following fields.
+
+A. Customer Details
+
+- Customer Name
+- Address
+- Aadhaar Number
+- PAN Number
+- Mobile Number
+- WhatsApp Number
+- Email ID
+- Customer Photo
+
+B. Property Details
+
+- Project Name
+- Property Type: Plot / Flat
+- Plot Number or Flat Number
+- Booking Date
+- Property Area
+- Applicable Area Unit
+- Rate
+- Property Total Price
+
+For plots:
+
+- Plot Number
+- Area in Square Metres
+- Area in Square Feet
+- Rate per Square Foot
+- Total Plot Price
+
+For flats:
+
+- Flat Number
+- Area in Square Metres
+- Area in Square Feet
+- Super Built-up Area
+- Carpet Area
+- Parking Area
+- Total Flat Price
+
+Calculate values automatically wherever the required inputs are available.
+
+Do not mix Square Metres, Square Feet, and construction material units. Each field must have a clearly displayed unit.
+
+C. Additional Charges
+
+Provide editable charge rows for:
+
+- Electrical Meter
+- Water Connection
+- MIDC Transfer Order
+- Other Charges
+
+Calculate:
+
+- Property Price
+- Total Additional Charges
+- Final Total Amount
+
+D. Booking and Payment
+
+- Token Amount
+- Down Payment
+- Payment Mode
+- Payment Date
+- Remaining Balance
+- Installment / EMI Plan
+- Monthly Installment Amount
+- Installment Due Date
+- Adviser Name
+- Commission Rule
+- Booking Status
+
+E. Final Summary
+
+Display:
+
+- Customer Details
+- Project and Property
+- Property Price
+- Additional Charges
+- Final Amount
+- Amount Received
+- Remaining Balance
+- Installment Schedule
+- Adviser Details
+
+Buttons:
+
+- Save
+- Save and Print Receipt
+- Edit
+- View
+- Search
+- Clear Form
+
+Important Customer Rules
+
+- One customer can purchase multiple plots or flats.
+- One customer can have multiple bookings and payments.
+- Every booking must have a unique transaction/reference number.
+- Saving a booking must update the property status.
+- Saving a payment must update the customer ledger and account records.
+- Do not create duplicate payment entries when editing or viewing a record.
+- Prevent two employees from booking the same available property simultaneously.
+- Show a clear warning if a plot or flat is already booked.
+
+Inline Add New Options
+
+Provide “+ Add New” beside:
+
+- Customer
+- Project
+- Plot
+- Flat
+- Adviser
+- Other relevant dropdowns
+
+When a new record is added, refresh the list and select the new record automatically.
+
+7. PLOT / FLAT MANAGEMENT
+
+Create a simple property availability module.
+
+Fields:
+
+- Project Name
+- Property Type
+- Plot / Flat Number
+- Area
+- Rate
+- Total Price
+- Customer Name
+- Booking Date
+- Status
+
+Statuses:
+
+- Available
+- Booked
+- Reserved
+- Cancelled
+
+Functions:
+
+- Add Plot / Flat
+- Edit Property
+- Search
+- Filter by Project
+- Filter by Status
+- View Customer
+- View Payment History
+- Print Property Report
+- Export Report
+
+Show available and booked properties clearly.
+
+Do not automatically make a cancelled property available again until the cancellation is approved and recorded.
+
+8. MATERIAL MANAGEMENT
+
+Create a simple construction material management module.
+
+A. Material Master
+
+Provide common materials such as:
+
+- Reti
+- Gitti
+- Murum
+- Churi
+- Crush Sand
+- TMT Bar
+- Cement
+- Other Materials
+
+Allow authorised users to add new materials.
+
+B. IMPORTANT MATERIAL UNIT REQUIREMENT
+
+For the following materials:
+
+- Reti
+- Gitti
+- Murum
+- Churi
+- Crush Sand
+
+The quantity entry and display must use the user's specified Feet format.
+
+Requirements:
+
+- Show the quantity field as “Quantity (Feet)”.
+- Do not display Brass.
+- Do not display CFT.
+- Do not automatically convert quantities into Brass or CFT.
+- Do not silently change the user's entered quantity.
+- Use the same configured unit consistently in purchase, receipt, usage, stock, and reports.
+- Show the unit beside every quantity.
+- Store the unit with each material transaction.
+
+Important: Do not treat Feet, Square Feet, and Cubic Feet as interchangeable units. Keep the user's specified Feet entry format separate from property area calculations. Do not invent conversion formulas. If a stock calculation requires a different physical unit, explain the limitation and ask for the approved measurement method before implementing a conversion.
+
+For cement, steel, and other materials, allow an appropriate configurable unit such as Bags, Kg, Tonnes, or Pieces. The administrator should configure the unit for each material.
+
+Never add quantities with incompatible units.
+
+C. Material Purchase Entry
+
+Fields:
+
+- Project Name
+- Material Name
+- Vendor Name
+- Bill Number
+- Bill Date
+- Quantity
+- Unit
+- Rate per Unit
+- Basic Amount
+- GST Percentage
+- GST Amount
+- Bill Total
+- Amount Paid
+- Outstanding Amount
+- Payment Due Date
+- Payment Mode
+- Bill Image / PDF Attachment
+- Remarks
+
+Calculations:
+
+- Basic Amount = Quantity × Rate per Unit
+- GST Amount = Basic Amount × Applicable GST Percentage
+- Bill Total = Basic Amount + GST Amount + Other Applicable Charges
+- Outstanding Amount = Bill Total − Payments Allocated to the Bill
+
+Use actual entered rates and quantities.
+
+Allow authorised users to enter multiple materials on one bill if required.
+
+D. Material Received
+
+Record the actual quantity received against the purchase order or bill.
+
+Fields:
+
+- Project
+- Vendor
+- Bill / Purchase Reference
+- Material
+- Ordered Quantity
+- Received Quantity
+- Receipt Date
+- Unit
+- Remarks
+
+Do not increase stock based only on a bill if the material has not actually been received.
+
+If received quantity differs from billed quantity, display a warning and preserve the difference for review.
+
+E. Material Usage
+
+Fields:
+
+- Project Name
+- Material Name
+- Quantity Used
+- Unit
+- Usage Date
+- Work Location / Site
+- Work Description
+- Approved By
+- Remarks
+
+Stock calculation must follow:
+Opening Stock + Actual Received Quantity − Approved Used Quantity = Closing Stock
+
+Keep purchase value and usage value separate.
+
+F. Material Stock Report
+
+Show:
+
+- Project
+- Material Name
+- Opening Stock
+- Quantity Purchased
+- Quantity Actually Received
+- Quantity Used
+- Remaining Stock
+- Unit
+- Purchase Amount
+- Usage Value, where supported by a defined costing method
+
+Provide project-wise, material-wise, and date-wise filters.
+
+9. MATERIAL-WISE REPORT AND DRILL-DOWN
+
+Create a simple report where the user can select a material and see its complete history.
+
+For example, clicking “Gitti” should show:
+
+- Total Quantity Purchased
+- Total Quantity Received
+- Total Quantity Used
+- Remaining Quantity
+- Total Purchase Amount
+- Total Amount Paid
+- Total Outstanding Amount
+
+Below the summary, show a transaction table containing:
+
+- Date
+- Project
+- Vendor
+- Bill Number
+- Quantity
+- Unit
+- Rate
+- Bill Amount
+- Amount Paid
+- Outstanding
+- Bill Attachment
+
+Clicking a vendor or bill should open the detailed vendor ledger or bill record.
+
+Do not combine purchase value and material usage value into one figure.
+
+Do not add different physical units together.
+
+10. VENDOR MANAGEMENT AND LEDGER
+
+Create Vendor Management inside Material Management.
+
+Fields:
+
+- Vendor Name
+- Business Name
+- Contact Person
+- Mobile Number
+- Address
+- GST Number
+- Email
+- Opening Balance
+- Remarks
+
+Vendor Ledger must show:
+
+- Bill Date
+- Bill Number
+- Project
+- Material
+- Bill Amount
+- GST
+- Payment Date
+- Payment Mode
+- Amount Paid
+- Outstanding Amount
+- Due Date
+
+Functions:
+
+- Add Vendor
+- Edit Vendor
+- View Vendor
+- Search Vendor
+- Add Bill
+- Record Payment
+- View Ledger
+- Print Ledger
+- Export Ledger
+- View Outstanding Bills
+
+Payment Due Reminders
+
+Show:
+
+- Upcoming Payments
+- Payments Due Today
+- Overdue Payments
+- Vendor-wise Outstanding
+
+Do not send automatic SMS, WhatsApp, or email unless the required service has been configured and authorised.
+
+11. BILL IMAGE AND PDF STORAGE
+
+Allow the user to attach:
+
+- Bill photographs
+- Scanned bills
+- PDF bills
+- Supporting documents
+
+Requirements:
+
+- Upload and store documents securely.
+- Link each file to its specific bill or expense record.
+- Open the file later.
+- Download the file.
+- Show the file name and upload date.
+- Restrict access according to user permissions.
+- Preserve attachments when records are edited.
+- Prevent unauthorised users from opening private documents.
+- Do not store sensitive documents in publicly accessible folders.
+
+Use secure cloud file storage, not temporary browser storage.
+
+12. LABOUR MANAGEMENT
+
+Create a simple Labour Management module.
+
+Fields:
+
+- Labour Name
+- Mobile Number
+- Address
+- Labour Type
+- Project
+- Joining Date
+- Wage / Salary Basis
+- Daily Rate or Monthly Salary
+- Overtime Rate
+- Advance Amount
+- Payment Date
+- Payment Amount
+- Payment Mode
+- Remarks
+
+Functions:
+
+- Add Labour
+- Edit Labour
+- Record Attendance or Work Days where required
+- Record Overtime
+- Record Advance
+- Record Payment
+- View Labour Ledger
+- View Total Wages
+- View Total Advances
+- View Total Paid
+- View Outstanding Balance
+- Print Payment Receipt
+- Export Labour Report
+
+Calculate labour dues from approved work, wages, advances, and payments.
+
+Do not count an advance twice when calculating the final payable amount.
+
+13. ADVISER MANAGEMENT
+
+Create an Adviser Management module.
+
+Fields:
+
+- Adviser Name
+- Mobile Number
+- Address
+- Email
+- Commission Type
+- Commission Rate
+- Commission Calculation Basis
+- Project
+- Remarks
+
+Commission calculation must use a configurable rule approved by the administrator.
+
+Allow rules such as:
+
+- Fixed Amount
+- Percentage of Property Value
+- Other approved calculation method
+
+Do not assume a commission rate.
+
+Show:
+
+- Total Eligible Commission
+- Commission Paid
+- Commission Outstanding
+- Payment History
+- Project-wise Commission
+- Customer / Property-wise Commission
+
+Functions:
+
+- Add Adviser
+- Edit Adviser
+- Record Commission Payment
+- View Ledger
+- Print Statement
+- Export Report
+
+Do not create commission twice for the same booking.
+
+If a booking is cancelled or changed, recalculate commission only according to the configured business rule and maintain an audit trail.
+
+14. CENTRAL ACCOUNTS MANAGEMENT
+
+Create one central Accounts module.
+
+It must include:
+
+- Customer Receipts
+- Vendor Payments
+- Labour Payments
+- Adviser Commission Payments
+- General Expenses
+- Other Income
+- Cash Account
+- Bank Accounts
+- Day Book
+- Cash Book
+- Bank Book
+- Income and Expense Report
+- Project-wise Financial Report
+- Outstanding Payments
+
+Financial Transaction Rules
+
+Every transaction must be saved once and linked to the relevant customer, vendor, labour, adviser, project, or expense.
+
+When a customer payment is saved:
+
+- Update the customer ledger.
+- Update the relevant booking balance.
+- Update cash or bank balance according to payment mode.
+- Include the receipt in financial reports.
+
+When a vendor payment is saved:
+
+- Update the vendor ledger.
+- Reduce the relevant bill's outstanding amount.
+- Update cash or bank balance.
+- Include the payment in financial reports.
+
+Apply equivalent rules to labour payments, adviser commissions, and expenses.
+
+IMPORTANT:
+
+- Do not create separate duplicate transactions when updating summaries.
+- Do not count a transfer between two company bank accounts as income or expense.
+- Keep transaction references and audit logs.
+- Allow authorised corrections through reversal or adjustment entries.
+- Do not silently delete posted financial transactions.
+- Prevent duplicate payments caused by repeated button clicks or network retries.
+
+Provide date-wise and project-wise filters.
+
+15. EXPENSE MANAGEMENT
+
+Create an expense entry form.
+
+Fields:
+
+- Expense Date
+- Project
+- Expense Category
+- Description
+- Vendor / Paid To
+- Bill Number
+- Amount Before GST, if applicable
+- GST, if applicable
+- Total Amount
+- Payment Mode
+- Cash / Bank Account
+- Amount Paid
+- Outstanding Amount, if payable later
+- Due Date
+- Bill Image / PDF
+- Remarks
+
+Provide categories such as:
+
+- Material Expense
+- Labour Expense
+- Transport
+- Electricity
+- Office Expense
+- Maintenance
+- Other Expense
+
+Allow authorised users to add categories.
+
+Functions:
+
+- Add Expense
+- Edit Draft Expense
+- View Expense
+- Search Expense
+- Attach Bill
+- Open Bill
+- Download Bill
+- Print Expense Report
+- Export Expense Report
+
+Prevent an expense already recorded through a vendor bill or another module from being counted a second time.
+
+16. CUSTOMER PAYMENT AND RECEIPTS
+
+Create a customer payment form.
+
+Fields:
+
+- Customer
+- Project
+- Plot / Flat
+- Booking Reference
+- Payment Date
+- Payment Amount
+- Payment Mode: Cash, Cheque, UPI, RTGS, NEFT, or Bank Transfer
+- Transaction / Cheque Reference
+- Receiving Account
+- Remarks
+
+Functions:
+
+- Save Payment
+- Print Receipt
+- View Receipt
+- Search Payment
+- View Customer Ledger
+- View Payment History
+- Download / Print Receipt
+
+Receipt should include:
+
+- Company Name
+- Company Address
+- GST Number, if applicable
+- Receipt Number
+- Receipt Date
+- Customer Name
+- Project and Property
+- Amount Received
+- Payment Mode
+- Previous Balance
+- Remaining Balance
+- Authorised Signature Area
+
+Receipt numbers must be unique.
+
+17. REPORTS
+
+Create a Reports module with these reports:
+
+Customer Reports
+
+- Customer List
+- Booking Report
+- Customer Payment Report
+- Customer Outstanding Report
+- Customer Ledger
+
+Property Reports
+
+- Available Plot / Flat Report
+- Booked Property Report
+- Project-wise Property Report
+
+Material Reports
+
+- Material Purchase Report
+- Material Received Report
+- Material Usage Report
+- Material Stock Report
+- Material-wise Purchase Value
+- Material-wise Usage Value
+- Vendor-wise Material Report
+
+Vendor Reports
+
+- Vendor Ledger
+- Vendor Outstanding
+- Due and Overdue Bills
+- Vendor Payment History
+
+Labour Reports
+
+- Labour Payment Report
+- Advance Report
+- Salary / Wage Report
+- Labour Outstanding Report
+
+Adviser Reports
+
+- Commission Report
+- Commission Paid Report
+- Commission Outstanding Report
+- Adviser Ledger
+
+Accounts Reports
+
+- Day Book
+- Cash Book
+- Bank Book
+- Income Report
+- Expense Report
+- Income and Expense Summary
+- Cash and Bank Balance
+- Customer Collections
+- Vendor Payments
+- Project-wise Financial Summary
+
+Filters
+
+Where relevant, provide:
+
+- From Date
+- To Date
+- Project
+- Customer
+- Vendor
+- Material
+- Adviser
+- Labour
+- Payment Mode
+- Status
+
+Export
+
+All appropriate tabular reports must support:
+
+- Excel-compatible CSV download
+- Filtered data export
+- Clear column headings
+- Correct date formats
+- Correct currency formats
+- Quantity units displayed in exported records
+
+Only export records the logged-in user is authorised to access.
+
+18. MASTER SETTINGS
+
+Create a Master Settings module.
+
+Company Master
+
+- Company Name
+- Company Address
+- Mobile Number
+- Email
+- Business Nature
+- GST Number
+- Company Logo
+- Bank Details
+- Receipt Header
+- Invoice Header
+
+These details must be used in receipts and printed reports.
+
+Dropdown Masters
+
+Allow authorised users to manage:
+
+- Projects
+- Property Types
+- Material Names
+- Material Units
+- Expense Categories
+- Payment Modes
+- Vendors
+- Advisers
+- Labour Types
+- Other required lists
+
+User Management
+
+- Create Employee Login
+- Edit User
+- Activate / Deactivate User
+- Assign Role
+- Assign Permissions
+- Reset Password securely
+
+Backup Settings
+
+Provide a documented backup strategy for:
+
+- Database records
+- Uploaded bills and documents
+- Company settings
+- Financial transactions
+
+Include a supported backup and restore process.
+
+Do not claim a backup is complete unless it has actually succeeded.
+
+19. USER LOGIN AND PERMISSIONS
+
+Support approximately 3–5 employees initially, with the option to expand.
+
+Each employee must have a separate login.
+
+Suggested roles:
+
+- Administrator
+- Accounts
+- Site Manager
+- Data Entry Operator
+- Read-Only User
+
+Permissions should control:
+
+- Viewing records
+- Creating records
+- Editing records
+- Approving transactions
+- Deleting or reversing transactions
+- Viewing financial reports
+- Exporting reports
+- Accessing attachments
+- Managing users and settings
+
+Use secure authentication and server-side access controls.
+
+Do not rely only on hiding buttons in the user interface.
+
+Never use public database permissions such as unrestricted read/write access in production.
+
+Do not store passwords in plain text.
+
+20. DATABASE AND CLOUD STORAGE
+
+Use a reliable shared cloud database suitable for the selected application architecture.
+
+Requirements:
+
+- Separate database for this new project.
+- Secure authentication.
+- Server-side permission checks.
+- Database indexes where appropriate.
+- Secure cloud file storage for bills and attachments.
+- Reliable transaction handling.
+- Audit logs for important changes.
+- Automated backup where supported.
+- Documented restore procedure.
+- Environment variables for secrets.
+- No exposed private API keys in frontend code.
+
+You may recommend Firebase or another suitable backend, but choose one architecture and implement it consistently.
+
+If Firebase is selected:
+
+- Configure Firebase Authentication.
+- Configure the database.
+- Configure secure database rules.
+- Configure secure file storage rules.
+- Add the correct project configuration.
+- Test with authorised and unauthorised accounts.
+- Do not use unrestricted public access rules.
+
+Explain exactly which configuration values I must provide and where to enter them.
+
+Do not falsely report that authentication, database, or cloud storage is connected when it is not.
+
+21. DESIGN REQUIREMENTS
+
+The interface must be:
+
+- Very simple
+- Professional
+- Fast
+- Responsive
+- Easy for ordinary employees
+- Suitable for mobile and desktop
+- Consistent across all modules
+
+Use:
+
+- Short labels
+- Clear forms
+- Search boxes
+- Simple dropdowns
+- Compact tables
+- Clear Save, Edit, View, Print, and Export buttons
+- Confirmation before important actions
+- Clear success and error messages
+- Loading indicators
+- Proper form validation
+
+Avoid:
+
+- Too many colours
+- Unnecessary animations
+- Oversized menus
+- Complicated English labels
+- Repeated forms for the same transaction
+- Fake dashboard values
+- Unnecessary duplicate modules
+
+The software should be easy to operate in daily business.
+
+22. DATA VALIDATION AND FINANCIAL ACCURACY
+
+Implement:
+
+- Required-field validation
+- Valid mobile number checks
+- Valid email checks when provided
+- Valid date checks
+- Non-negative quantity validation unless an authorised adjustment requires otherwise
+- Currency precision
+- Correct GST calculations
+- Correct outstanding balances
+- Duplicate transaction prevention
+- Safe handling of concurrent users
+- Clear error messages
+
+Store currency amounts using a reliable numeric representation suitable for financial calculations.
+
+Do not silently round or alter important financial values.
+
+Record who created or changed important records and when.
+
+23. TESTING REQUIREMENTS
+
+Before declaring the software complete, test the following:
+
+1. Create a project.
+2. Add a customer.
+3. Add a plot or flat.
+4. Book a property.
+5. Record a customer payment.
+6. Verify the customer ledger and balance.
+7. Add a vendor.
+8. Enter a material purchase.
+9. Record actual material receipt.
+10. Record material usage.
+11. Verify remaining stock.
+12. Record a vendor payment.
+13. Verify vendor outstanding.
+14. Add a labour record.
+15. Record a labour payment.
+16. Add an adviser.
+17. Calculate commission using a configured rule.
+18. Record an adviser commission payment.
+19. Enter a general expense.
+20. Verify the Day Book, Cash Book, Bank Book, and financial summaries.
+21. Upload and reopen a bill attachment.
+22. Export filtered reports.
+23. Test different employee permissions.
+24. Log in through the web application.
+25. Log in through the mobile application.
+26. Enter a transaction on mobile and verify it appears on the web.
+27. Enter a transaction on the web and verify it appears on mobile.
+28. Test duplicate-click and network retry protection.
+29. Test backup and restoration.
+30. Verify that unauthorised users cannot access protected records or files.
+
+Do not mark a test as passed unless it has actually been performed.
+
+24. DEVELOPMENT PHASES
+
+Build the project in the following phases, while keeping the complete requirements above as the final target.
+
+Phase 1
+
+- New project setup
+- Authentication
+- Database
+- User roles
+- Company Master
+- Dashboard foundation
+
+Phase 2
+
+- Projects
+- Plot / Flat Management
+- Customer Entry
+- Booking and customer receipts
+
+Phase 3
+
+- Material Management
+- Vendor Management
+- Material purchase
+- Material receipt
+- Material usage
+- Stock reports
+- Vendor ledger
+
+Phase 4
+
+- Labour Management
+- Adviser Management
+- Commission calculation
+
+Phase 5
+
+- Accounts
+- Expenses
+- Day Book
+- Cash Book
+- Bank Book
+- Income and Expense Reports
+
+Phase 6
+
+- Complete reports
+- Excel/CSV export
+- Receipt printing
+- Bill attachments
+- Backup and restoration
+
+Phase 7
+
+- Responsive Web Application testing
+- Android Mobile Application testing
+- Shared database testing
+- Permissions and security testing
+- Final bug fixing
+
+25. FINAL INSTRUCTIONS
+
+Start this as a completely new and independent ERP project.
+
+Do not change or overwrite my old software.
+
+Do not stop after creating a design or demo.
+
+Implement the actual application code, database integration, forms, calculations, reports, authentication, file storage, and tests.
+
+Keep the application simple and professional.
+
+Use the same backend and database for the Web Application and Mobile Application.
+
+For construction materials such as Reti, Gitti, Murum, Churi, and Crush Sand, use my requested Feet entry format. Do not display Brass or CFT. Do not introduce an unapproved conversion formula.
+
+If a required external service is not configured, tell me exactly what is missing and how to configure it.
+
+At the end, provide:
+
+1. Working Web Application.
+2. Working Android-compatible Mobile Application.
+3. Complete source code.
+4. Database setup instructions.
+5. Authentication and security setup.
+6. Cloud storage setup.
+7. Backup and restore instructions.
+8. Deployment instructions.
+9. Testing results.
+10. A list of any remaining tasks or external credentials required.
+
+First create the new project structure and explain the selected technology stack. Then implement the project phase by phase. Do not modify my existing ERP.
